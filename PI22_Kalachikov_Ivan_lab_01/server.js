@@ -2,47 +2,37 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var winston = require('winston');
 const { format } = require('winston');
-const { combine, timestamp, label, printf } = format;
+const { printf } = format;
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const myFormat = printf(({ level, message, timestamp }) => {
-    return `{${timestamp}} ${message}`;
-  });
-
 var logger = winston.createLogger({
-    format: combine(
-        timestamp(),
-        myFormat
-      ),
+    format: printf(({message}) => {
+        return ` ${message}`;
+    }),
     transports: [
-        new winston.transports.Console(),
         new winston.transports.File({
             filename: 'logs.log',
+            handleExceptions: true
         })
-      ]
+    ]
 })
 
 app.listen(8080, function () {
-    logger.info("Server started on port 8080")
+    logger.info("{" + new Date().toUTCString() + "} Server started on port 8080")
 })
 
 var logging = function (req, res, next) {
-    logger.info("{" + req.ip + "} {" + req.method + "} {" + req.protocol + '://' + req.get('host') + req.originalUrl + "} {" + res.statusCode + "}");
+    logger.info("{" + new Date().toUTCString() + "} {" + req.ip + "} {" + req.method + "} {" + req.protocol + '://' + req.get('host') + req.originalUrl + "} {" + res.statusCode + "}");
     next();
 };
-  
+
 app.use(logging);
 
-app.get('/ping', function (req, res) {
-    res.send({
-        status: 'ok'
-    })
-})
+var dayOfTheWeek = function (day) {
 
-app.get('/weekday', function (req, res) {
     var days = [
         'Sunday',
         'Monday',
@@ -54,34 +44,54 @@ app.get('/weekday', function (req, res) {
       ];
 
     var date = new Date();
-    var answer = new Date(date.getFullYear(), date.getMonth(), req.query.day);
-    res.send('<h1>' + days[answer.getDay()] + '</h1>');
-})
+    var answer = new Date(date.getFullYear(), date.getMonth(), day);
+    return days[answer.getDay()]
+}
 
-app.post('/calc', function (req, res) {
+var calculate = function (value1, value2, operation) {
     var result;
-    switch (req.body.operation) {
+    switch (operation) {
         case 'addition':
-            result = Number(req.body.value1) + Number(req.body.value2)
+            result = value1 + value2
             break;
         case 'subtraction':
-            result = Number(req.body.value1) - Number(req.body.value2)
+            result = value1 - value2
             break;
         case 'multiplication':
-            result = Number(req.body.value1) * Number(req.body.value2)
+            result = value1 * value2
             break;
         case 'division':
-            result = Number(req.body.value1) / Number(req.body.value2)
+            result = value1 / value2
             break;
         default:
-            res.send({status:'error', body:'dont understand operation ' + req.body.operation})
-            return;
+            return ({status:'error', body:'dont understand operation ' + operation})
     }
 
     if (!Number.isFinite(result)) {
-        res.send({status:'error', body:'incorrect values'})
-        return;
+        return({status:'error', body:'incorrect values'})
     }
 
-    res.send({status:'ok', body:result});
+    return {status:'ok',body:result};
+}
+
+app.get('/ping', function (req, res) {
+    res.send({
+        status: 'ok'
+    })
 })
+
+app.get('/weekday', function (req, res) {
+    if (Number(req.query.day) < 1 || Number(req.query.day) > 31) {
+        throw new Error("incorrect values")
+    }
+    res.send(dayOfTheWeek(Number(req.query.day)));
+})
+
+app.post('/calc', function (req, res) {
+    res.send(calculate(req.body.value1, req.body.value2, req.body.operation));
+})
+
+app.use(function(err, req, res, next) {
+    logger.error(err.stack);
+    res.status(500).send('Something broke!');
+});
