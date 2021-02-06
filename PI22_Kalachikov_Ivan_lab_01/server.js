@@ -92,6 +92,6 @@ app.post('/calc', function (req, res) {
 })
 
 app.use(function(err, req, res, next) {
-    logger.error(err.stack);
-    res.status(500).send('Something broke!');
+    logger.error("{" + new Date().toUTCString() + "} {" + req.ip + "} {" + req.method + "} {" + req.protocol + '://' + req.get('host') + req.originalUrl + "}\n" + err.stack);
+    res.status(400).send(err.message);
 });
