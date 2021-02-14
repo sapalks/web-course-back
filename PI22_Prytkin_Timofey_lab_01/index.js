@@ -35,13 +35,30 @@ function getDayByNumber (dayNumber) {
     //Названия дней недели
     var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+    var normalYear = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+    var leapYear = [ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
     //Текущая дата
     var currentDate = new Date();
 
     //Требуемая дата
-    var requiredDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
+    var requiredDate;
 
-    return {"weekday":daysOfWeek[requiredDate.getDay()]}
+    if ((currentYear % 4 == 0 && currentYear % 100 != 0) || currentYear % 400 == 0){//Если високосный год
+        if (leapYear[currentDate.getMonth()] >= dayNumber) {
+            requiredDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
+            return {"weekday":daysOfWeek[requiredDate.getDay()]};
+        } else {
+            return null;
+        }
+    } else {// Если не високоснный год
+        if (normalYear[currentDate.getMonth()] >= dayNumber) {
+            requiredDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dayNumber);
+            return {"weekday":daysOfWeek[requiredDate.getDay()]};
+        } else {
+            return null;
+        }
+    }
 }
 
 /**
@@ -87,12 +104,14 @@ app.get('/ping', function (request, response) {
 //Определить день недели по номеру дня текущего месяца
 app.get('/weekday', function (request, response) {
     if (Number(request.query.day) > 0 && Number(request.query.day) < 32) {
-        try {
-            response.send(getDayByNumber(Number(request.query.day)));
-        } catch {
-            logger.error("{" + new Date().toUTCString() + "} {" + request.ip + "} {" + request.method + "} {" + request.protocol + '://' + request.get('host') + request.url + "} { Недопустимый день в месяце }");
-            throw new Error("Ошибка! В текущем месяце меньше дней.")
-        }
+      var result = getDayByNumber(Number(request.query.day));
+
+      if (result != null) {
+          response.send(result);
+      } else {
+          logger.error("{" + new Date().toUTCString() + "} {" + request.ip + "} {" + request.method + "} {" + request.protocol + '://' + request.get('host') + request.url + "} { Недопустимый день в месяце }");
+          response.send({"weekday":"Недопустимый день в месяце"});
+      }
     } else {
         logger.error("{" + new Date().toUTCString() + "} {" + request.ip + "} {" + request.method + "} {" + request.protocol + '://' + request.get('host') + request.url + "} { Недопустимый номер дня в месяце }");
         throw new Error("Ошибка! Недопустимый номер дня в месяце. Принимаются значения только от 1 до 31.")
