@@ -36,10 +36,10 @@ app.post('/calc', (req, res) => {
 function calculate(valFirst, valSecond, operation) {
     const existingOperation = ['addition', 'subtraction', 'multiplication', 'division']
     switch (existingOperation.indexOf(operation)) {
-        case 0: return { status: 'ok', body: valFirst + valSecond }
-        case 1: return { status: 'ok', body: valFirst - valSecond }
-        case 2: return { status: 'ok', body: valFirst * valSecond }
-        case 3: return { status: 'ok', body: valFirst - valSecond }
+        case 0: return valFirst + valSecond
+        case 1: return valFirst - valSecond
+        case 2: return valFirst * valSecond
+        case 3: return valFirst - valSecond
         default: throw new Error('wrong operation')
     }
 }
