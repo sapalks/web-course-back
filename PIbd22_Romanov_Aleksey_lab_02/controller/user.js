@@ -11,12 +11,11 @@ class UserController {
 
     async getUsers(req, res) {
         const id = req.query.id
-
         if (id) {
-            const user = await db.query('SELECT * FROM customer where id = $1', [id])
+            const user = await db.query('SELECT * FROM customer where id = $1 and isDeleted = false', [id])
             res.json(user.rows[0])
         } else {
-            const users = await db.query('SELECT * FROM customer')
+            const users = await db.query('SELECT * FROM customer where isDeleted = false')
             res.json(users.rows)
         }
     }
@@ -30,7 +29,7 @@ class UserController {
 
     async deleteUser(req, res) {
         const id = req.query.id
-        await db.query('DELETE FROM customer where id = $1', [id])
+        await db.query('Update customer set isDeleted = true where id = $1', [id])
         res.json(`user with id: ${id} was successfully deleted`)
     }
 }

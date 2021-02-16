@@ -15,16 +15,16 @@ class ProjectController {
     async getProject(req, res) {
         const { id, customerId } = req.query
         if (id) {
-            const project = await db.query('SELECT * FROM project where id = $1', [id])
+            const project = await db.query('SELECT * FROM project where id = $1 and isDeleted = false', [id])
             res.json(project.rows[0])
             return
         }
         if (customerId) {
             const project = await db.query(
-                'select *  from project  where id = (select projectid from customer_project where customerid = $1)', [customerId])
+                'select * from project where id = (select projectid from customer_project where customerid = $1 and isDeleted = false)', [customerId])
             res.json(project.rows)
         } else {
-            const projects = await db.query('SELECT * FROM project')
+            const projects = await db.query('SELECT * FROM project where isDeleted = false')
             res.json(projects.rows)
         }
     }
@@ -38,8 +38,8 @@ class ProjectController {
 
     async deleteProject(req, res) {
         const id = req.query.id
-        await db.query('DELETE FROM customer_project where projectid = $1', [id])
-        await db.query('DELETE FROM project where id = $1', [id])
+        await db.query('Update customer_project set isDeleted = true where projectid = $1', [id])
+        await db.query('Update project set isDeleted = true where id = $1', [id])
         res.json(`project with id: ${id} was successfully deleted`)
     }
 }
