@@ -50,11 +50,11 @@ const calculate = (body) => {
 			return body.digit1 * body.digit2
 		case "division":
 			if (body.digit2 === 0) {
-				throw new Error("digit2 = " + body.digit2)
+				return ({ status: 'error', body: 'division by zero' })
 			}
 			return body.digit1 / body.digit2
 		default:
-			throw new Error("incorrect operation")
+			return ({ status: 'error', body: 'incorrect operation ' + body.operation })
 	}
 };
 
@@ -64,5 +64,5 @@ app.listen(port, () => {
 
 app.use((error, req, res, next) => {
 	fs.appendFile('log.log', new Date().toUTCString() + ' error status: 500, error on server \n', function () { })
-	res.status(500).send('Error')
+	res.status(400).send(err.message)
 })
