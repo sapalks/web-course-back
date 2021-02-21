@@ -10,7 +10,7 @@ const getCurrentDay = (date) => {
     return days[date];
 }
 
-const calc = ({value1, value2, operation}) => {
+const calc = (value1, value2, operation) => {
     switch(operation) {
         case "addition":
             return value1 + value2
@@ -19,7 +19,7 @@ const calc = ({value1, value2, operation}) => {
         case "multiplication":
             return value1 * value2
         case "division":
-            return value1 + value2
+            return value1 / value2
         default:
             return {status: 'error', body : 'this operation not exist O_o'};
     }
