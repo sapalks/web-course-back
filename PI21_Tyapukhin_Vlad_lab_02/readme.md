@@ -39,4 +39,6 @@ CREATE TABLE student (
 - `GET /student?id={id}` - возвращает студента по id  
 - `POST /student` - создает запись в таблице студентов  
 - `PUT /student` - редактирует запись в таблице студентов  
-- `DELETE /student?id={id}` - помечает запись со студентом удаленной 
+- `DELETE /student?id={id}` - помечает запись со студентом удаленной  
+
+Ссылка на видео: https://www.youtube.com/watch?v=l0WYEXt8u9g
