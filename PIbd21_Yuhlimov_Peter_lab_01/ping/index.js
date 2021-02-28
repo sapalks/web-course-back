@@ -67,3 +67,30 @@ app.post('/сalc', function (req, res) {
     res.send(calculation(req.body.value1, req.body.value2, req.body.operation));
 })
 
+const water = (valueWater, currentMeasure) => {
+    switch(currentMeasure) {
+        case "унция":
+            return (valueWater * 0.0284)
+        case "драхма":
+            return (valueWater * 0.0036)
+        case "скрупул":
+            return (valueWater * 0.0018)
+        case "миним":
+            return (valueWater * 0.0006)
+        default:
+            return {status: 'error', body : 'this measure not exist'};
+    }
+}
+app.get('/measure', (req, res) => {
+    const {valueWater, currentMeasure} = req.body;
+    res.json(water(valueWater, currentMeasure) + " литр(ов)");
+});
+
+app.post('/text', (req, res) => {
+    const {text} = req.body;
+    const regex = /\d+/g;
+    var matches = text.match(regex);
+
+    res.json({body : matches});
+});
+
