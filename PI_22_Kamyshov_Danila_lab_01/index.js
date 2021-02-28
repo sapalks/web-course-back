@@ -1,32 +1,23 @@
 const express = require('express')
 const parser = require('body-parser').json()
-const filestream = require('fs')
+const winston = require('winston')
 const app = express()
 const port = 3000
 
-app.get('/ping', (req, res) => {
-    res.json({ status: 'ok' });
-    logg(req.connection.remoteAddress, req. method, req.url, req.client._httpMessage.statusCode)
-});
-
-app.get('/weekday', (req, res) => {
-    let date = new Date()
-    if(req.query.day < 1 || req.query.day > 31){
-        throw new Error('Invalid params')
-    }
-    res.json({ "weekday": getWeekDay(new Date(date.getFullYear(), date.getMonth(), req.query.day)) });
-    logg(req.connection.remoteAddress, req. method, req.url, req.client._httpMessage.statusCode)
-});
+var logger = winston.createLogger({
+    format: winston.format.json (),
+    transports: [
+        new winston.transports.File({
+            filename: 'logger.log',
+            handleExceptions: true
+        })
+    ]
+})
 
 function getWeekDay(date) {
     let days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
     return days[date.getDay()]
 }
-
-app.post('/calc', parser, (req, res) => {
-    res.json({ status: "ok", "body": calculate(req.body) })
-    logg(req.connection.remoteAddress, req. method, req.url, req.client._httpMessage.statusCode)
-})
 
 const calculate = (body) => {
     switch (body.operation) {
@@ -46,9 +37,26 @@ const calculate = (body) => {
     }
 }
 
-const logg = (ip, method, url, status) => {
-    filestream.appendFile('logger.log', new Date().toUTCString() + ' ' + ip + ' ' + method + ' ' + url + ' ' + status + "\n", function() {})
-}
+app.use((req, res, next) => {
+    logger.info(new Date().toUTCString() + "  " + req.ip + "  " + req.method + "  " + req.url + "  " + res.statusCode);
+    next();
+});
+
+app.get('/ping', (req, res) => {
+    res.json({ status: 'ok' });
+});
+
+app.get('/weekday', (req, res) => {
+    let date = new Date()
+    if(req.query.day < 1 || req.query.day > 31){
+        throw new Error('Invalid params')
+    }
+    res.json({ "weekday": getWeekDay(new Date(date.getFullYear(), date.getMonth(), req.query.day)) });
+});
+
+app.post('/calc', parser, (req, res) => {
+    res.json({ status: "ok", "body": calculate(req.body) })
+})
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
@@ -56,5 +64,5 @@ app.listen(port, () => {
 
 app.use(function (err, req, res, next) {
     res.status(400).send(err.message);
-    filestream.appendFile('logger.log', new Date().toUTCString() + ' ' + req.ip + ' ' + req.method + ' ' + req.originalUrl + ' ' + res.statusCode + '\n', function () { });
+    logger.error(new Date().toUTCString() + "  " + req.ip + "  " + req.method + "  " + req.url + "  " + res.statusCode + " " + err.message);
 })
