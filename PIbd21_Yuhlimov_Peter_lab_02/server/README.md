@@ -36,5 +36,5 @@ CREATE TABLE book (
 - POST /book - создает запись в таблице книг
 - PUT /book - редактирует запись в таблице книг
 - DELETE /book?id={id} - помечает запись с книгой удаленной  
-- 
-- [Видео с демонстрацией]:https://disk.yandex.ru/i/DZhqa6_D7OWJQQ
+
+Видео с демонстрацией : https://disk.yandex.ru/i/DZhqa6_D7OWJQQ
