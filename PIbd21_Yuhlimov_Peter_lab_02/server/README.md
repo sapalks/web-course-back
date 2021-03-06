@@ -35,6 +35,6 @@ CREATE TABLE book (
 - GET /book?id={id} - возвращает книгу по id
 - POST /book - создает запись в таблице книг
 - PUT /book - редактирует запись в таблице книг
-- DELETE /book?id={id} - помечает запись с книгой удаленной 
-
-[Видео с демонстрацией]:https://disk.yandex.ru/i/DZhqa6_D7OWJQQ
+- DELETE /book?id={id} - помечает запись с книгой удаленной  
+- 
+- [Видео с демонстрацией]:https://disk.yandex.ru/i/DZhqa6_D7OWJQQ
