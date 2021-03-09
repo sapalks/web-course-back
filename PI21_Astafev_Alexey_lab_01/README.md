@@ -25,4 +25,4 @@
 Ввод данных для POST-запроса /calc проходит через формы в файле calc.html
 
 ### Видео:
-[Видео можно найти по этой ссылке]()
+[Видео можно найти по этой ссылке](https://drive.google.com/file/d/1vxs4f6bBorrRcwIfmpZ4Rz9iqZPxY2wp/view?usp=sharing)
