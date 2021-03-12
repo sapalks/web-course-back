@@ -21,7 +21,6 @@ app.listen(port, () => {
 
 app.use(bodyParser.json());
 
-
 app.use((req, res, next) => {
     logger.info(`${new Date().toUTCString()}, ${req.ip}, ${req.method}, ${req.url}, ${res.statusCode}`);
     next();
@@ -29,22 +28,18 @@ app.use((req, res, next) => {
 
 app.get('/ping', (req, res) => {
     res.json({ status: 'ok' });
-    res.send();
 })
 
 app.get('/weekday', (req, res) => {
     res.json({ weekday:  getDayOfWeek(req, res)})
-    res.send();
 })
 
 app.post('/calc', (req, res) => {
     res.json({ status: 'ok', "body": calc(req, res) });
-    res.send();
 })
 
 function getDayOfWeek(req, res) {
     if (req.query.day < 1 || req.query.day > 31) {
-        logger.error(`${new Date().toUTCString()}, ${req.ip}, ${req.method}, ${req.url}, ${res.statusCode}, Неправильный ввод значения(ий)`);
         throw new Error("Invalid day");
     }
     let day  = new Date();
@@ -72,9 +67,12 @@ function calc (req, res) {
             result = value1 / value2;
             break;
         default:
-            logger.error(`${new Date().toUTCString()}, ${req.ip}, ${req.method}, ${req.url}, ${res.statusCode}, Неправильный ввод операции`);
             throw new Error("Invalid operation")
     }
     return result;
 }
 
+app.use(function (err, req, res, next) {
+    res.status(400).send(err.message);
+    logger.error(`${new Date().toUTCString()}, ${req.ip}, ${req.method}, ${req.url}, ${res.statusCode}`);
+})
