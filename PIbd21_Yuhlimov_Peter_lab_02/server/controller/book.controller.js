@@ -13,16 +13,16 @@ class BookController{
     }
     async getBook(req,res){
         const id = req.params.id
-        const book = await db.query('SELECT * FROM book WHERE bookId = $1',[id])
+        const book = await db.query('SELECT * FROM book WHERE bookId = $1 and isDeleted = FALSE',[id])
         res.json(book.rows[0])
     }
     async getBooks(req,res){
-        const books = await db.query('SELECT * FROM book')
+        const books = await db.query('SELECT * FROM book WHERE isDeleted = FALSE')
         res.json(books.rows)
     }
     async getAutorBooks(req,res){
         const id = req.params.id
-        const books = await db.query('SELECT * FROM book WHERE writerID = $1',[id])
+        const books = await db.query('SELECT * FROM book WHERE writerID = $1 and isDeleted = FALSE',[id])
         res.json(books.rows)
     }
     async deleteBook(req,res){

@@ -13,11 +13,11 @@ class WriterController{
     }
     async getWriter(req,res){
         const id = req.params.id
-        const writers = await db.query('SELECT * FROM writer WHERE writerId = $1',[id])
+        const writers = await db.query('SELECT * FROM writer WHERE writerId = $1 and isDeleted = FALSE',[id])
         res.json(writers.rows[0])
     }
     async getWriters(req,res){
-        const writers = await db.query('SELECT * FROM writer')
+        const writers = await db.query('SELECT * FROM writer WHERE isDeleted = FALSE')
         res.json(writers.rows)
     }
     async deleteWriter(req,res){
