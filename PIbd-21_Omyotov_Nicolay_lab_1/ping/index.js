@@ -96,7 +96,7 @@ function calc(value1, value2, operation) {
     case "subtraction":
       return value1 - value2;
     case "addition":
-      return value1 + value2;
+      return Number(value1) + Number(value2);
     case "multiplication":
       return value1 * value2;
     case "division":
