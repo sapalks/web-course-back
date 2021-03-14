@@ -1,6 +1,22 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const fs = require("fs");
+
+app.use(function (err, req, res, next) {
+  res.status(400).send(err.message);
+  fs.appendFile("applog.log", `${logStr(req)}\n${err.stack}\n`, function () {});
+  next();
+});
+
+app.use(function (req, res, next) {
+  fs.appendFile(
+    "applog.log",
+    `${logStr(req)} ${res.statusCode}\n`,
+    function () {}
+  );
+  next();
+});
 
 app.get("/ping", (req, res) => {
   res.json({ status: "ok" });
@@ -13,32 +29,24 @@ app.get("/weekday", (req, res) => {
   });
 });
 
-// app.post("/calc/", (req, res) => {
-//   console.log("body is ", req.body);
-//   let result;
-//   try {
-//     result = calc(
-//       request.body.value1,
-//       request.body.value2,
-//       request.body.operation
-//     );
-//   } catch (e) {
-//     console.log(e);
-//     res.json({
-//       status: "error",
-//       body: e.toString(),
-//     });
-//   }
+app.post("/calc", (req, res) => {
+  console.log("body is ", req.query);
+  let result;
+  try {
+    result = calc(req.query.value1, req.query.value2, req.query.operation);
+  } catch (e) {
+    console.log(e);
+    fs.appendFile("applog.log", `${logStr(req)}\n${e.stack}\n`, function () {});
+    res.status(400).json({
+      status: "error",
+      body: e.toString(),
+    });
+  }
 
-//   res.send({
-//     status: "ok",
-//     body: result,
-//   });
-// });
-
-app.post("/calc", function (req, res) {
-  console.log(`body is `, req.body);
-  res.send(calc(req.body.value1, req.body.value2, req.body.operation));
+  res.send({
+    status: "ok",
+    body: result,
+  });
 });
 
 app.listen(port, () => {
@@ -99,4 +107,21 @@ function calc(value1, value2, operation) {
     default:
       throw Error("Operation does not exist");
   }
+}
+
+function logStr(req) {
+  return (
+    "{" +
+    new Date().toUTCString() +
+    "} {" +
+    req.ip +
+    "} {" +
+    req.method +
+    "} {" +
+    req.protocol +
+    "://" +
+    req.get("host") +
+    req.originalUrl +
+    "}"
+  );
 }
