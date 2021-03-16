@@ -1,23 +1,26 @@
-# Лаботраторная 3 
+# Лаботраторная 4 
 # ПИбд-22 Калачиков Иван
 
-Для запуска тестов в терминале нужно ввести команду **npm run test:e2e**
+Для запуска сервера в терминале нужно ввести команду **npm start**
 
-С помощью фреймворка **Cucubmer.js** было написано две фичи на языке **Gherkin**,
-в которых описывались различные сценарии запросов к серверу для их последующего тестирования
+* Аутентификация и авторизация были реализованы с помощью **passport.js**
+* Для хэширования паролей перед сохранением в БД используется **bcrypt**
 
-Суммарно было написано 11 сценариев
-1. Add department
-2. Get departments
-3. Get department by id
-4. Update department 
-5. Remove department
-6. Add employee
-7. Get employees 
-8. Get employees by department id
-9. Get employee by id
-10. Update employee
-11. Remove employee
+В БД была создана таблица пользователей
 
-Выполнение всех сценариев включает в себя 35 прописанных шагов
+```sql
+create table client
+(
+    id serial not null
+        constraint user_pk
+            primary key,
+    login    varchar(255) not null,
+    password varchar(255) not null
+);
 
+create unique index user_login_uindex
+    on client (login);
+```
+
+После чего были прописаны запросы **/register** и **/login** и в классах **routes** 
+была добавлена авторизация по токену
