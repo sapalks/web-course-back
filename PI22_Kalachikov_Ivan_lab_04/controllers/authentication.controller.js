@@ -1,5 +1,6 @@
 const db = require("../configurations/db");
 const jwt = require('jsonwebtoken');
+const {validationResult} = require('express-validator');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -16,6 +17,11 @@ class AuthenticationController {
     }
 
     async register(req, res) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
         const username = req.body.username;
         const password = req.body.password;
 
@@ -36,6 +42,11 @@ class AuthenticationController {
     }
 
     async login(req, res) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
         const username = req.body.username;
         const password = req.body.password;
         const user = await findOneByLogin(username)

@@ -1,4 +1,4 @@
-const db = require("../configurations/db")
+const db = require("../configurations/db");
 
 class DepartmentController {
     async createDepartment(req, res) {

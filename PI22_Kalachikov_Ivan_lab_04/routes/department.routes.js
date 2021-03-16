@@ -1,6 +1,6 @@
-var Router = require("express");
-var router = new Router();
-var departmentController = require("../controllers/department.controller");
+const Router = require("express");
+const router = new Router();
+const departmentController = require("../controllers/department.controller");
 const passport = require("passport");
 
 router.post("/department", passport.authenticate('jwt', {session: false}), departmentController.createDepartment)
