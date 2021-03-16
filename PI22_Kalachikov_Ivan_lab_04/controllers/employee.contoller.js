@@ -1,9 +1,9 @@
-var db = require("../db")
+const db = require("../configurations/db")
 
 class EmployeeController {
     async createEmployee(req, res) {
-        var {first_name, last_name, payment, department_id} = req.body;
-        db.query("INSERT INTO employee(first_name, last_name, payment, department_id) VALUES ($1, $2, $3, $4) RETURNING *",
+        const {first_name, last_name, payment, department_id} = req.body;
+        await db.query("INSERT INTO employee(first_name, last_name, payment, department_id) VALUES ($1, $2, $3, $4) RETURNING *",
         [first_name, last_name, payment, department_id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
@@ -13,7 +13,7 @@ class EmployeeController {
     }
 
     async getEmployees(req, res) {
-        db.query("SELECT * FROM employee WHERE is_deleted = FALSE", (err, result) => {
+        await db.query("SELECT * FROM employee WHERE is_deleted = FALSE", (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -22,8 +22,8 @@ class EmployeeController {
     }
 
     async getEmployeesOnDepartment(req, res) {
-        var department_id = req.params.dep_id;
-        db.query("SELECT * FROM employee WHERE department_id = $1 AND is_deleted = FALSE", [department_id], (err, result) => {
+        const department_id = req.params.dep_id;
+        await db.query("SELECT * FROM employee WHERE department_id = $1 AND is_deleted = FALSE", [department_id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -32,8 +32,8 @@ class EmployeeController {
     }
 
     async getEmployee(req, res) {
-        var id = req.params.id;
-        db.query("SELECT * FROM employee WHERE id = $1 AND is_deleted = FALSE", [id], (err, result) => {
+        const id = req.params.id;
+        await db.query("SELECT * FROM employee WHERE id = $1 AND is_deleted = FALSE", [id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -42,8 +42,8 @@ class EmployeeController {
     }
 
     async updateEmployee(req, res) {
-        var {id, first_name, last_name, payment, department_id} = req.body;
-        db.query("UPDATE employee SET first_name = $1, last_name = $2, payment = $3, department_id = $4 WHERE id = $5 AND is_deleted = FALSE RETURNING *",
+        const {id, first_name, last_name, payment, department_id} = req.body;
+        await db.query("UPDATE employee SET first_name = $1, last_name = $2, payment = $3, department_id = $4 WHERE id = $5 AND is_deleted = FALSE RETURNING *",
         [first_name, last_name, payment, department_id, id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
@@ -53,8 +53,8 @@ class EmployeeController {
     }
 
     async deleteEmployee(req, res) {
-        var id = req.params.id;
-        db.query("UPDATE employee SET is_deleted = TRUE WHERE id = $1 RETURNING *", [id], (err, result) => {
+        const id = req.params.id;
+        await db.query("UPDATE employee SET is_deleted = TRUE WHERE id = $1 RETURNING *", [id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }

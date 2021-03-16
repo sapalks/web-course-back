@@ -1,7 +1,7 @@
 const {Given, When, Then} = require('@cucumber/cucumber');
 const assert = require("assert").strict;
 const {deepFilterProperties, matchObjects, isObject} = require('./utils');
-const db = require("../../db");
+const db = require("../../configurations/db");
 const {expect} = require('chai')
 
 When("a client wants to add employee with first name {string} and last name {string} in department with id {int} and payment {float}",

@@ -1,4 +1,4 @@
-var db = require("../db")
+var db = require("../configurations/db")
 
 db.query("DELETE FROM employee");
 db.query("ALTER SEQUENCE employee_id_seq RESTART");

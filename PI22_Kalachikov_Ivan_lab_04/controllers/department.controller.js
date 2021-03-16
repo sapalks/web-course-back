@@ -1,9 +1,9 @@
-var db = require("../db")
+const db = require("../configurations/db")
 
 class DepartmentController {
     async createDepartment(req, res) {
-        var name = req.body.name;
-        db.query("INSERT INTO department(name) VALUES ($1) RETURNING *", [name], (err, result) => {
+        const name = req.body.name;
+        await db.query("INSERT INTO department(name) VALUES ($1) RETURNING *", [name], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -12,7 +12,7 @@ class DepartmentController {
     }
 
     async getDepartments(req, res) {
-        db.query("SELECT * FROM department WHERE is_deleted = false ORDER BY id", (err, result) => {
+        await db.query("SELECT * FROM department WHERE is_deleted = false ORDER BY id", (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -21,8 +21,8 @@ class DepartmentController {
     }
 
     async getDepartment(req, res) {
-        var id = req.params.id;
-        db.query("SELECT * FROM department WHERE id = $1 AND is_deleted = false", [id], (err, result) => {
+        const id = req.params.id;
+        await db.query("SELECT * FROM department WHERE id = $1 AND is_deleted = false", [id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -31,8 +31,8 @@ class DepartmentController {
     }
 
     async updateDepartment(req, res) {
-        var {id, name} = req.body;
-        db.query("UPDATE department SET name = $1 WHERE id = $2 AND is_deleted = false RETURNING *", [name, id], (err, result) => {
+        const {id, name} = req.body;
+        await db.query("UPDATE department SET name = $1 WHERE id = $2 AND is_deleted = false RETURNING *", [name, id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
@@ -41,8 +41,8 @@ class DepartmentController {
     }
 
     async deleteDepartment(req, res) {
-        var id = req.params.id;
-        db.query("UPDATE department SET is_deleted = true WHERE id = $1 RETURNING *", [id], (err, result) => {
+        const id = req.params.id;
+        await db.query("UPDATE department SET is_deleted = true WHERE id = $1 RETURNING *", [id], (err, result) => {
             if (err || result.rows.length === 0) {
                 return res.sendStatus(204)
             }
