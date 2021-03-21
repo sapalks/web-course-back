@@ -1,44 +1,76 @@
-const {Given, When, Then} = require('@cucumber/cucumber');
-const assert = require("assert").strict;
+const {Given, When, Then, Before} = require('@cucumber/cucumber');
 const {deepFilterProperties, matchObjects, isObject} = require('./utils');
-const db = require("../../db");
 const {expect} = require('chai')
 
-When("a client wants to add employee with first name {string} and last name {string} in department with id {int} and payment {float}",
-    function (firstName, lastName, departmentId, payment) {
-    this.api().addEmployee(firstName, lastName, departmentId, payment);
+let start
+let startForDepartment;
+let currentDepartmentId;
+let currentId;
+
+Before(async function () {
+    await this.employee().clear()
+    start = true;
+    startForDepartment = true;
 });
 
-When("a client wants to get a list of employees", function () {
-    this.api().addEmployee("Petr", "Petrov", 2, 30500);
-    this.api().getEmployees();
-});
-
-When("a client wants to get a list of employees on department with id {int}", function (id) {
-    this.api().addEmployee("Stipan", "Stipanov", 1, 25000);
-    this.api().getEmployeesOnDepartment(id);
-});
-
-When("a client wants to get employee with id {int}", function (id) {
-    this.api().getEmployee(id);
-});
-
-When("a client wants to update employee with id {int} and change name to {string}, last name to {string}, department id to {int}, payment to {float}",
-    function (id, firstName, lastName, departmentId, payment) {
-        this.api().updateEmployee(id, firstName, lastName, departmentId, payment)
+Given('a client added test department with name {string}', function (name) {
+    this.department().add(name);
+    if (startForDepartment) {
+        currentDepartmentId = this.department().getLastId();
+        startForDepartment = false;
+    }
+    this.assertOk();
 })
 
-When('a client wants to remove employee with id {int}', function (id) {
-    this.api().deleteEmployee(id);
-});
-
-
-Then('if client wants to get a list of employees server must reply with a json in body like', function (jsonStr) {
-    this.api().getEmployees();
-    const pattern = JSON.parse(jsonStr);
-    const obj = this.response.json;
-    if (!matchObjects(pattern, obj)) {
-        expect(obj).to.eql(pattern[0]);
+When('a client wants to add employee with first name {string} and last name {string} and payment {float} in department with index {int}',
+    function (firstName, lastName, payment, departmentIndex) {
+    this.employee().add(firstName, lastName, currentDepartmentId + departmentIndex - 1, payment);
+    if (start) {
+        currentId = this.employee().getLastId();
+        start = false;
     }
 });
 
+When("a client wants to get a list of employees", function () {
+    this.employee().getList();
+});
+
+When('a client wants to get a list of employees in department with index {int}', function (departmentIndex) {
+   this.employee().getListOnDepartment(currentDepartmentId + departmentIndex - 1);
+});
+
+Given('a client added employee with first name {string} and last name {string} and payment {int} in department with index {int}',
+    function (firstName, lastName, payment, departmentIndex) {
+    this.employee().add(firstName, lastName, currentDepartmentId + departmentIndex - 1, payment);
+    if (start) {
+        currentId = this.employee().getLastId();
+        start = false;
+    }
+});
+
+When('a client wants to get employee on index {int}', function (index) {
+    let id = currentId + index - 1;
+    this.employee().getOne(id);
+})
+
+When('a client wants to update a employee on index {int} with first name {string} and last name {string} and payment {float} in department with index {int}',
+    function (index, firstName, lastName, payment, departmentIndex) {
+        let id = currentId + index - 1;
+        this.employee().update(id, firstName, lastName, currentDepartmentId + departmentIndex - 1, payment)
+});
+
+
+Then('if client wants to get a list of employees server must reply with a json in body like', function (docString) {
+    this.employee().getList();
+    const expected = JSON.parse(docString);
+    const filtered = deepFilterProperties(this.response.json, ['id', 'department_id']);
+    if (isObject(filtered.body) && Object.keys(filtered.body).length === 0) {
+        delete filtered.body;
+    }
+    expect(filtered).to.eql(expected);
+})
+
+When('a client wants to remove employee on index {int}', function (index) {
+    let id = currentId + index - 1;
+    this.employee().remove(id);
+})

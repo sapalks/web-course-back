@@ -1,17 +1,30 @@
 const { BaseWorld } = require('./base');
-const { ExampleWorld } = require('./api');
+const { EmployeeWorld } = require('./employee');
+const { DepartmentWorld } = require('./department');
 const { setWorldConstructor } = require('@cucumber/cucumber');
+const {expect} = require('chai')
 
 class RootWorld extends BaseWorld {
-    #api
+    #employee
+    #department
 
     constructor() {
         super({});
-        this.#api = new ExampleWorld(this._state);
+        this.#employee = new EmployeeWorld(this._state);
+        this.#department = new DepartmentWorld(this._state);
     }
 
-    api() {
-        return this.#api;
+    employee() {
+        return this.#employee;
+    }
+
+    department() {
+        return this.#department;
+    }
+
+    assertOk() {
+        expect(this.response.statusCode).to.eql(200);
+        this.forget();
     }
 }
 
