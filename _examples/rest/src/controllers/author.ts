@@ -25,3 +25,13 @@ export async function get(request: Request, response: Response) {
     const id = request.query.id as string
     response.json(ok(await AuthorService.get(id)));
 }
+
+
+export async function getPureSql(request: Request, response: Response) {
+    if (!request.query.id) {
+        response.json(ok(await AuthorService.getPureSql()))
+        return;
+    }
+    const id = request.query.id as string
+    response.json(ok(await AuthorService.getPureSql(id)));
+}
