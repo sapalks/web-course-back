@@ -1,6 +1,5 @@
 const db = require('../db')
 const jwt = require('jsonwebtoken')
-const timeExpire = 604800
 
 class UserController{
     async register(req,res){
