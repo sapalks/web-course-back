@@ -21,9 +21,9 @@ function getDayOfWeek(insertDate) {
     throw new Error('No day')
 }
 
-app.get('///ping', (req, res) => res.json({ status: 'ok' }))
+app.get('/ping', (req, res) => res.json({ status: 'ok' }))
 
-app.get('///weekday', (req, res) => res.json(getDayOfWeek(req.query.day)))
+app.get('/weekday', (req, res) => res.json(getDayOfWeek(req.query.day)))
 
 app.listen(port, () => fs.appendFile(pathLogFile, new Date().toUTCString() + ' ' + 'Server running on at hhtp://localhost:' + port + '\n', () => { }))
 
