@@ -14,17 +14,17 @@
 - Запускаем тест: `npm run test:e2e`
 
 ## Описание сценариев:
-`Add countries` - сценарий добавления страны
-`Get countries`- сценарий получения списка стран
-`Get country by Id` - сценарий получения страны по Id
-`Update country with id 402` - сценарий изменения страны с Id 402
-`Delete country with Id 401` - сценарий удаления страны с Id 401
-`Add hotell` - сценарий добавления отеля
-`Get hotels` - сценарий получения списка отелей
-`Get hotel by Id` - сценарий получения отеля по Id
-`Get hotels in country with Id 401` - сценарий получения списка отелей в стране с Id 401
-`Update hotel with Id 302` - сценарий изменения отеля с Id 302
-`Delete hotel with Id 301` - сценарий удаления отеля с Id 301
+1. `Add countries` - сценарий добавления страны
+2. `Get countries`- сценарий получения списка стран
+3. `Get country by Id` - сценарий получения страны по Id
+4. `Update country with id 2` - сценарий изменения страны с Id 2
+5. `Delete country with Id 1` - сценарий удаления страны с Id 1
+6. `Add hotell` - сценарий добавления отеля
+7. `Get hotels` - сценарий получения списка отелей
+8. `Get hotel by Id` - сценарий получения отеля по Id
+9. `Get hotels in country with Id 1` - сценарий получения списка отелей в стране с Id 1
+10. `Update hotel with Id 2` - сценарий изменения отеля с Id 2
+11. `Delete hotel with Id 1` - сценарий удаления отеля с Id 1
 
 ### [Видео с демонстрацией работы](https://drive.google.com/file/d/1RMk-6V9nc1tO7_2Kg5Y92aC_NI4jRse2/view?usp=sharing)
 
