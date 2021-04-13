@@ -18,15 +18,15 @@
 - `POST /register` - регистрация пользователя
 ```js
 body:
-	{
-		"Login": "Filippov",
-		"Password": "Nikita"
-	}
-	request:
-	{
-		"Login": "Filippov",
-		"Password": "Nikita" // or 'error', and in body field error description
-	}
+{
+	"Login": "Filippov",
+	"Password": "Nikita"
+}
+request:
+{
+	"Login": "Filippov",
+	"Password": "Nikita" // or 'error', and in body field error description
+}
 ```
 - `POST /login` - авторизации пользователя
 ```js
