@@ -16,4 +16,7 @@
 
 
 ### Логирование:
-Логирование всех запросов в файл `logging.log`. Файл находится в корневой папке проекта. Формат логирования `{Date and time in UTC} {Ip} {Method} {Url} {Status code}`.
+Логирование всех запросов в файл `log.log`. Файл находится в корневой папке проекта. 
+Формат логирования `{Date and time in UTC} {Ip} {Method} {Url} {Status code}`.
+
+Ссылка на видео: https://drive.google.com/file/d/1W_6heqeL390KYfjECF6hf2ZPkUl4ma8J/view?usp=sharing
