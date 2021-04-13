@@ -16,28 +16,32 @@
 
 ## Описание запросов:
 - `POST /register` - регистрация пользователя
-		body:
-		{
-			"Login": "Filippov",
-			"Password": "Nikita"
-		}
-		request:
-		{
-			"Login": "Filippov",
-			"Password": "Nikita" // or 'error', and in body field error description
-		}
+```js
+body:
+	{
+		"Login": "Filippov",
+		"Password": "Nikita"
+	}
+	request:
+	{
+		"Login": "Filippov",
+		"Password": "Nikita" // or 'error', and in body field error description
+	}
+```
 - `POST /login` - авторизации пользователя
-        body:
-		{
-    		"Login": "Filippov",
-    		"Password": "Nikita"
-    	}	
-    	}
-    	request:
-    	{
-    		"status": "ok", // or 'error'
-    		"token": "token" // or error description
-    	}
+```js
+body:
+{
+	"Login": "Filippov",
+	"Password": "Nikita"
+}	
+}
+request:
+{
+	"status": "ok", // or 'error'
+	"token": "token" // or error description
+}
+```
 
 ## Действия с БД:
 В базу данных была добавлена таблица пользователей.
