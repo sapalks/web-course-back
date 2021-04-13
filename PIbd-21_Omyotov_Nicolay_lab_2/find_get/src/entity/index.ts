@@ -24,5 +24,5 @@ export const config = {
 
 
 export {
-    Author, Book
+    User, Notice, Category, Message, NoticeSubCategory, SubCategory
 }

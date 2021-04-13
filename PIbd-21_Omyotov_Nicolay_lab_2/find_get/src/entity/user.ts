@@ -12,8 +12,8 @@ export class User {
     @Column({ default: 0 })
     rate: number;
 
-    @Column()
-    date: Date;
+    @Column({ name: 'join_date'})
+    joinDate: Date;
 
     @Column({ default: 0, name: 'num_reviews'})
     numReviews: number;
@@ -24,8 +24,8 @@ export class User {
     @Column({ default: 0, name: 'num_subscribers' })
     numSubscribers: number;
 
-    @Column({ default: 0, name: 'phone_number' })
-    phoneNumber: number;
+    @Column({ name: 'phone_number' })
+    phoneNumber: string;
 
     @Column()
     city: string;
