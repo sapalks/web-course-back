@@ -3,13 +3,12 @@ const bodyParser = require('body-parser');
 
 const countriesRoutes = require('./routes/countries.routes.js');
 const hotelsRoutes = require('./routes/hotels.routes.js');
-const port = process.env.PORT;
+const port = process.env.PORT || 5294;
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.get('/ping', (req, res) => {
     res.json({ status: 'ok', time: new Date().toUTCString() });

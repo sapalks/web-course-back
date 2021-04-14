@@ -1,10 +1,13 @@
 const pgsql = require('pg');
+const dbconfig = require('../configs/db.config')
 
 const client = new pgsql.Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  user: dbconfig.user,
+  password: dbconfig.password,
+  database: dbconfig.database,
+  port: dbconfig.port,
+  host: dbconfig.host,
+  ssl: dbconfig.ssl
 });
 
 client.connect();
