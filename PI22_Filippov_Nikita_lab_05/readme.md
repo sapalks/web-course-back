@@ -15,6 +15,6 @@
 - Запускаем сервер: `npm start`
 - Запускаем тест: `npm run test:e2e`
 
-## [Адрес деплоя на Heroku] (https://young-taiga-95436.herokuapp.com/ping)
+## [Адрес деплоя на Heroku](https://young-taiga-95436.herokuapp.com/ping)
 
 ## [Видео с демонстрацией работы](https://drive.google.com/file/d/1XYBv_naOZfXem3H63N_gcMrco1ftnnmb/view?usp=sharing)
