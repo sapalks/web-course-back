@@ -61,14 +61,14 @@ export class UserService {
     return await rep.save(user);
   }
 
-  public static async get(...ids: number[]): Promise<User[]> {
+  public static async get(ids: number[]): Promise<User[]> {
     const rep = getManager().getRepository(User);
     return await rep.findByIds(ids, { take: 10 });
   }
 
   public static async getAll(): Promise<User[]> {
     const rep = getManager().getRepository(User);
-    return await rep.query("select * from 'user'");
+    return await rep.query("select * from public.user");
   }
 
   public static async delete(id: number): Promise<User> {
