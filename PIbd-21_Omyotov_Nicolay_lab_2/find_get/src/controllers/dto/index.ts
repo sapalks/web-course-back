@@ -1,2 +1,3 @@
-export { ResponseDto } from './response'
-export { AuthorDto } from './author';
+export { ResponseDto } from "./responseDTO";
+export { UserDto } from "./userDTO";
+export { NoticeDto } from "./noticeDTO";

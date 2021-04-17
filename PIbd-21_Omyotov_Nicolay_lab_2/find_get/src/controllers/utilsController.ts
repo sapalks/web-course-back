@@ -11,7 +11,6 @@ export async function toDto<T>(request: Request, type: ClassConstructor<T>): Pro
     if (errors.length)
         throw new Error()
     return user;
-
 }
 
 export async function makeFreshDatabase() {
