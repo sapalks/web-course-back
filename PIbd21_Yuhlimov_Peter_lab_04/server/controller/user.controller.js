@@ -1,5 +1,6 @@
 const db = require('../db')
 const jwt = require('jsonwebtoken')
+const timeExpire = 604800
 
 class UserController{
     async register(req,res){
@@ -21,25 +22,19 @@ class UserController{
 
     async login(req,res){
         const {login,password} = req.body
-        const safelogin = await db.query('SELECT * FROM userTable WHERE login = $1',[login])
+        const safelogin = await db.query('SELECT * FROM userTable WHERE login = $1 and password = $2',[login,password])
         if (safelogin.rows[0] == null){
-            res.send({status:'error', body:'The user with this login is not registered'})
+            res.send({status:'error', body:'The user with this login is not registered or incorrect password'})
+            return
         }
-        else{
-            const safepassword = await db.query('SELECT * FROM userTable WHERE password = $1',[password])
-            if (safepassword.rows[0] == null){
-                return res.status(400).json({ status: 'error', error: 'Invalid password' });
+        const token = jwt.sign({userID: safelogin.rows[0].userid, login}, 'secret', { expiresIn: "7d" })
+        return res.json({
+            token,
+            currentUser: {
+                userID: safelogin.rows[0].userid,
+                username: login
             }
-            //const currentUser = await findUser(login);
-            const token = jwt.sign({userID: safelogin.rows[0].userid, login}, 'secret', { expiresIn: "7d" })
-            return res.json({
-                token,
-                currentUser: {
-                    userID: safelogin.rows[0].userid,
-                    username: login
-                }
-            });
-        }
+        });
     }
 }
 module.exports = new UserController()
