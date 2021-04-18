@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn, Column, Unique } from "typeorm";
 export class Author {
 
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    id: string;
 
     @Column()
     name: string;

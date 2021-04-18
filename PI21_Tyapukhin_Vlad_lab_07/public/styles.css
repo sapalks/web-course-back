@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.post {
+    margin: 22% auto 25px;
+    color: white;
+}
+
+.download, .upload {
+    margin-top: 15%;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 0 50px;
+}
+
+.response {
+    margin-top: 20%;
+    font-size: 225%;
+    color: white;
+}
+
+label {
+    font-size: 125% !important;
+}
+
+.main {
+    margin-top: 15%;
+}
+
+.buttons {
+    margin-bottom: 50px;
+}
+
+.token {
+    margin-top: 18%;
+    color: white;
+}
+
+.info,.colortext {
+    color: green;
+}
+
+.info_time {
+    color: greenyellow;
+}
+
+.FAF {
+    font-size: 225%;
+}

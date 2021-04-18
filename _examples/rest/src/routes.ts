@@ -19,6 +19,11 @@ const AppRoutes: Route[] = [
         action: author.get
     },
     {
+        path: "/author/pure",
+        method: "get",
+        action: author.getPureSql
+    },
+    {
         path: "/author",
         method: "post",
         action: author.create

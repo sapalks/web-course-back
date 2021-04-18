@@ -32,4 +32,12 @@ export class AuthorService {
             return await rep.find({ take: 10 });
         return await rep.findByIds(ids, { take: 10 });
     }
+
+
+    public static async getPureSql(...ids: string[]): Promise<Author[]> {
+        const rep = getManager().getRepository(Author);
+        if (ids.length === 0)
+            return await rep.query('select * from Author')
+        return await rep.query('select * from Author where 1=0 or ' + ids.map(id => `"id"='${id}'`).join(' or '))
+    }
 }
