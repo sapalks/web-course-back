@@ -1,37 +1,36 @@
 import { Expose } from "class-transformer";
-import { IsDefined } from "class-validator";
+import { IsDefined, IsOptional } from "class-validator";
 
 export class UserDto {
+  @IsDefined()
+  @Expose()
+  name: string;
 
-    @IsDefined()
-    @Expose()
-    name: string;
+  @IsOptional()
+  @Expose()
+  rate: number;
 
-    @IsDefined()
-    @Expose()
-    rate: number;
+  @IsOptional()
+  @Expose()
+  joinDate: Date;
 
-    @IsDefined()
-    @Expose()
-    joinDate: Date;
+  @IsOptional()
+  @Expose()
+  numReviews: number;
 
-    @IsDefined()
-    @Expose()
-    numReviews: number;
+  @IsOptional()
+  @Expose()
+  numSubscribtions: number;
 
-    @IsDefined()
-    @Expose()
-    numSubscribtions: number;
+  @IsOptional()
+  @Expose()
+  numSubscribers: number;
 
-    @IsDefined()
-    @Expose()
-    numSubscribers: number;
+  @IsDefined()
+  @Expose()
+  phoneNumber: string;
 
-    @IsDefined()
-    @Expose()
-    phoneNumber: string;
-
-    @IsDefined()
-    @Expose()
-    city: string;
+  @IsDefined()
+  @Expose()
+  city: string;
 }

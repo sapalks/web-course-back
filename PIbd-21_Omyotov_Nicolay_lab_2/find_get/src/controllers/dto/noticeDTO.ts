@@ -22,15 +22,11 @@ export class NoticeDto {
   @Expose()
   photoUrl?: string;
 
-  @IsDefined()
+  @IsOptional()
   @Expose()
   safeDeal: boolean;
 
-  @IsDefined()
+  @IsOptional()
   @Expose()
   deliveryPossibility: boolean;
-
-  @IsDefined()
-  @Expose()
-  postDate: Date;
 }

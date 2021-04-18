@@ -30,10 +30,10 @@ export async function create(request: Request, response: Response) {
 }
 
 export async function remove(request: Request, response: Response) {
-  if (!request.query.id) {
+  if (!request.body.id) {
     throw new ArgumentError("id");
   }
-  const id = Number(request.query.id);
+  const id = Number(request.body.id);
   response.json(ok(await NoticeService.delete(id)));
 }
 
@@ -41,6 +41,7 @@ export async function get(request: Request, response: Response) {
   if (!request.query.id) {
     throw new ArgumentError("id");
   }
+  logger.info(request.query);
   const id = Number(request.query.id);
   response.json(ok(await NoticeService.get(id)));
 }
@@ -50,19 +51,16 @@ export async function getAll(request: Request, response: Response) {
     response.json(ok(await NoticeService.getAll()));
     return;
   }
-  const ownerId = Number(request.query.ownerId);
+  const ownerId = Number(request.query.id);
   response.json(ok(await NoticeService.getAllByOwnerId(ownerId)));
 }
 
 export async function update(request: Request, response: Response) {
-  const notice = plainToClass(NoticeDto, request.body);
-  const errors = await validate(notice, { skipMissingProperties: true });
-  if (errors.length) {
-    logger.info(JSON.stringify(errors, null, "  "));
-    throw new ArgumentError();
+  if (!request.body.id) {
+    throw new ArgumentError("id");
   }
-
-  const id = Number(request.query.id);
+  const notice = plainToClass(NoticeDto, request.body);
+  const id = Number(request.body.id);
   response.json(
     ok(
       await NoticeService.update(id, {

@@ -61,7 +61,7 @@ export class UserService {
     return await rep.save(user);
   }
 
-  public static async get(ids: number[]): Promise<User[]> {
+  public static async get(...ids: number[]): Promise<User[]> {
     const rep = getManager().getRepository(User);
     return await rep.findByIds(ids, { take: 10 });
   }

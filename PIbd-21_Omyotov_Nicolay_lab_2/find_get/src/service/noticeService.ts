@@ -7,8 +7,8 @@ export class NoticeService {
   public static async add(
     purchaseName: string,
     price: number,
-    safeDeal: boolean,
-    deliveryPossibility: boolean,
+    safeDeal: boolean = false,
+    deliveryPossibility: boolean = false,
     ownerId?: number,
     description?: string,
     photoUrl?: string
@@ -75,9 +75,9 @@ export class NoticeService {
     return await rep.query("select * from notice");
   }
 
-  public static async getAllByOwnerId(id: number): Promise<Notice[]> {
+  public static async getAllByOwnerId(ownerId: number): Promise<Notice[]> {
     const rep = getManager().getRepository(Notice);
-    return await rep.query(`select * from notice where id=${id}`);
+    return await rep.query(`select * from notice where owner_id=${ownerId}`);
   }
 
   public static async delete(id: number): Promise<Notice> {
