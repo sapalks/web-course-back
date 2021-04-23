@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Yandex OAuth</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div>
+    <p class="sign-in-text">Code is <%= code %></p>
+    <p class="sign-in-text">Refresh token is <%= refresh_token %></p>
+    <h1></h1>
+    <div class="content-bottom">
+        <a class="btn" href="/refresh">UPDATE REFRESH TOKEN</a>
+        <h1></h1>
+        <a class="btn" href="/logout">LOG OUT</a>
+    </div>
+</div>
+
+</body>
+</html>
