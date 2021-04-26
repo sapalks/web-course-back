@@ -11,9 +11,9 @@
 <div>
     <div class="content-bottom">
         <ul>
-            <% result.forEach(function(item) { %>
-                <li><%= item.name %></li>
-            <% }); %>
+            <% result.forEach(function(item) {
+               <%= item.name %>
+             }); %>
         </ul>
          <a class="btn" href="/files">GET FILES</a>
         <h1></h1>
