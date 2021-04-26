@@ -1,0 +1,55 @@
+body {
+    font-family: 'Tahoma', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+}
+
+td{
+    text-align:  left;
+}
+
+td.header {
+    min-width: 150px;
+}
+td.info{
+    min-width: 900px;
+}
+caption {
+    caption-side: top;
+    color: blue;
+    text-align: center;
+}
+
+.button {
+    background: black;
+    color: white;
+    display: block;
+    padding: 7px;
+    margin: 25px;
+    text-align: center;
+}
+
+.bigLabel {
+    color: black;
+    display: block;
+    font-size: 25px;
+    text-shadow: 3px 3px 5px black, 0 0 1em white;
+}
+
+
+a{
+    text-decoration: none;
+}
+a:hover {
+    background: white;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.note{
+    color: grey;
+}
