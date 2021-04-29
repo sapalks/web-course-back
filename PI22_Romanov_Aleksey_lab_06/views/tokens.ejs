@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tokens</title>
+</head>
+
+<body>
+<div>
+    <h3>Current tokens</h3>
+    <ul>
+        <li>Access token: <%= access_token %></li>
+        <li>Refresh token: <%= refresh_token %></li>
+        <li>Lifetime: <%= lifetime %></li>
+        <li>Type token: <%= type %></li>
+    </ul>
+    <a href="/updateToken">Get new tokens</a>
+    <a href="/logout">Logout</a>
+    <div>
+        Примечание: Основной токен может не обновиться, если оставшийся срок его жизни достаточно длительный и выдавать
+        новый токен нет необходимости
+    </div>
+</div>
+</body>
+</html>
