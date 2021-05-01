@@ -1,0 +1,23 @@
+{
+  "name": "pi21_savkina_ksenia_lab_03",
+  "version": "1.0.0",
+  "description": "lab3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e": "cucumber-js"
+  },
+  "author": "ksenia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "postgres": "^1.0.2",
+    "postgresql": "0.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "cucumber": "^7.0.0-rc.0",
+    "sync-request": "^6.1.0"
+  }
+}
