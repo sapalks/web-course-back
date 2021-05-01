@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calc</title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+
+    <script>
+        async function subFunc(){
+            let value1=document.forms.calculation.value1.value;
+            let value2=document.forms.calculation.value2.value;
+            let operation=document.forms.calculation.operation.value;
+            const data={value1,value2,operation};
+            const options={
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+            };
+            const response = await fetch('/calc',options);
+            const json = await response.json();
+            console.log(json);
+            document.forms.calculation.result.value=json.result;
+        }
+        
+    </script>
+
+    <h1>Введите данные</h1>
+    <form name="calculation">
+        <label>Value1</label>
+        <input name="value1" type="number"/>
+        <label>Value2</label>
+        <input name="value2" type="number"/>
+        <label>Operation</label>
+        <input name="operation" />
+        <input type="button" value="Отправить" onclick="subFunc();"/>
+        <br><br><br>
+        <label>result</label>
+        <input name="result" disabled="true"></label>
+    </form>
+
+</body>
+</html>
