@@ -3,15 +3,16 @@ const YandexStrategy = require('passport-yandex').Strategy;
 const keys = require('../keys')
 const authController = require('../../controllers/authentication.controller')
 
-passport.serializeUser((user, done) => {
-    done(null, user.id)
-})
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
 
-passport.deserializeUser((id, done) => {
-    authController.findOneByYandexId(id).then((user) => {
-        done(null, user)
-    })
-})
+passport.deserializeUser(function (user, done) {
+    const check = authController.findOneByYandexId(user.yandex_id)
+    if (check) {
+        done(null, user);
+    }
+});
 
 passport.use(
     new YandexStrategy({
@@ -19,11 +20,13 @@ passport.use(
             clientSecret: keys.yandex.clientSecret,
             callbackURL: keys.yandex.redirect
         },
-         async (accessToken, refreshToken, profile, done) => {
+        async (accessToken, refreshToken, profile, done) => {
             let client = await authController.findOneByYandexId(profile.id);
             if (!client) {
                 client = await authController.saveClient(profile.displayName, profile.id)
             }
+            client.accessToken = accessToken
+            client.refreshToken = refreshToken
             done(null, client)
         })
 );

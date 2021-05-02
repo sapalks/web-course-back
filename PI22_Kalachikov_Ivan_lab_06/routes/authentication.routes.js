@@ -14,14 +14,30 @@ router.post("/login",
     body("password").isLength({min: 6}),
     authenticationController.login)
 
+
+
 router.get("/yandex", passport.authenticate('yandex'))
 
-router.get('/yandex/callback', authenticationController.getTokens)
+router.get('/yandex/callback', passport.authenticate('yandex'),
+    async (req, res) => {
+        res.render('home', {
+            username: await req.user.login
+        })
+    })
 
-router.get('/register', (req, res) => {
-    res.render('register')
+router.get('/tokens', async (req, res) => {
+    console.log(await req.user)
+    res.render('tokens', {
+        accessToken: await req.user.accessToken,
+        refreshToken: await req.user.refreshToken
+    })
 })
 
 router.post('/refresh', authenticationController.refreshTokens)
+
+router.get('/logout', (req, res) => {
+    req.logout()
+    res.redirect('/')
+})
 
 module.exports = router;

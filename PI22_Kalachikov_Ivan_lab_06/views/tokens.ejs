@@ -22,13 +22,18 @@
                         <label>Access token</label>
                         <h5 class="w-100 text-break"><%= accessToken %></h5>
                     </div>
-                    <div class="mb-5">
+                    <div class="mb-3">
                         <label>Refresh token</label>
                         <h5 class="w-100 text-break"><%= refreshToken %></h5>
                         <input type="hidden" name="refreshToken" value="<%= refreshToken %>">
                     </div>
-                    <div class="mb-3">
-                        <input type="submit" formaction="/refresh" value="Обновить токен" class="btn btn-success w-100">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <input type="submit" formaction="/refresh" value="Обновить токен" class="btn btn-success w-100">
+                        </div>
+                        <div class="col-6">
+                            <input type="submit" formmethod="get" formaction="/logout" value="Выйти" class="btn btn-danger w-100">
+                        </div>
                     </div>
                 </form>
             </div>

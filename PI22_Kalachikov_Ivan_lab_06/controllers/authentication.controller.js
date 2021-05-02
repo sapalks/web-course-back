@@ -6,11 +6,6 @@ const keys = require('../configurations/keys')
 const fetch = require("node-fetch");
 
 class AuthenticationController {
-    async findOneByLogin(login) {
-        const client = await db.query('SELECT * FROM client WHERE login = $1', [login]);
-        return client.rows[0];
-    }
-
     async getTokens(req, res) {
         await fetch('https://oauth.yandex.ru/token', {
             method: 'post',
@@ -22,10 +17,20 @@ class AuthenticationController {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }).then(res => res.json()).then(data => res.render('tokens', {
+        }).then(res => res.json()).then(data => {res.render('tokens', {
             accessToken: data.access_token,
-            refreshToken: data.refresh_token
-        }))
+            refreshToken: data.refresh_token,
+            time: data.expires_in
+        })})
+    }
+
+    async getCode(req, res) {
+        await fetch('https://oauth.yandex.ru/authorize?response_type=code&client_id=' + keys.yandex.clientID)
+        .then(res => res.json()).then(data => {res.render('tokens', {
+            accessToken: data.access_token,
+            refreshToken: data.refresh_token,
+            time: data.expires_in
+        })})
     }
 
     async refreshTokens(req, res) {
@@ -40,7 +45,8 @@ class AuthenticationController {
             }
         }).then(res => res.json()).then(data => res.render('tokens', {
             accessToken: data.access_token,
-            refreshToken: data.refresh_token
+            refreshToken: data.refresh_token,
+            time: data.expires_in
         }))
     }
 
