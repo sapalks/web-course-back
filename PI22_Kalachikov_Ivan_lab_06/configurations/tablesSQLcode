@@ -1,0 +1,36 @@
+create table department
+(
+    id serial not null
+        constraint department_pkey
+            primary key,
+    name varchar(30) not null,
+    is_deleted boolean default false
+);
+
+create table client
+(
+    id serial not null
+        constraint user_pk
+            primary key,
+    login    varchar(255) not null,
+    password varchar(255) not null,
+    yandex_id varchar(255) unique
+);
+
+create unique index user_login_uindex
+    on client (login);
+
+create table employee
+(
+    id            serial         not null
+        constraint employee_pkey
+            primary key,
+    first_name    varchar(30)    not null,
+    last_name     varchar(30)    not null,
+    payment       numeric(10, 2) not null,
+    department_id integer
+        constraint employee_department_id_fkey
+            references department
+        on update cascade on delete cascade,
+    is_deleted    boolean default false
+);
