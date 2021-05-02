@@ -26,7 +26,6 @@ router.get('/yandex/callback', passport.authenticate('yandex'),
     })
 
 router.get('/tokens', async (req, res) => {
-    console.log(await req.user)
     res.render('tokens', {
         accessToken: await req.user.accessToken,
         refreshToken: await req.user.refreshToken
