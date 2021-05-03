@@ -17,26 +17,7 @@
 ## Сервер обрабатывает следующие CRUD запросы: 
 
 ### POST /register - регистрация
-body:
-{
-    "username": "login",
-    "password": "password"
-}
-request:
-{
-    "status": "ok" // or 'error', and in body field error description
-}
 
 ### POST /login - авторизация
-body:
-{
-    "username": "login",
-    "password": "password"
-}
-request:
-{
-    "status": "ok", // or 'error'
-    "body": "token" // or error description
-}
 
 Ссылка на видео: https://youtu.be/-VVnkBZhZgc
