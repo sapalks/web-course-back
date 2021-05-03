@@ -1,3 +1,5 @@
+import { User } from "./../entity/user";
+import { UnauthorizedError } from "./../error";
 import { UserDto } from "./dto/userDTO";
 import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
@@ -6,6 +8,7 @@ import { AlreadyExistsError, ArgumentError, NotFoundError } from "../error";
 import { logger } from "../logger";
 import { UserService } from "../service/userService";
 import { ok } from "./utilsController";
+import * as jwt from "jsonwebtoken";
 
 export async function create(request: Request, response: Response) {
   logger.info(JSON.stringify(request.body));
@@ -63,8 +66,36 @@ export async function login(request: Request, response: Response) {
   if (!(await UserService.exists(login))) {
     throw new NotFoundError();
   }
+  if (await UserService.checkPassword(login, password)) {
+    throw new UnauthorizedError();
+  }
 
   response.json(ok(`Bearer ${await UserService.getToken(login, password)}`));
+}
+
+export async function checkJWT(request: Request): Promise<User> {
+  const token = request.body.token;
+  if (token) {
+    try {
+      let userId = undefined;
+      jwt.verify(token, "secret-key", function (_err: any, decoded: any) {
+        userId = decoded.payload.userId;
+      });
+      if (!userId) {
+        throw new UnauthorizedError();
+      }
+      const user = (await UserService.get(userId))[0];
+      if (!user) {
+        throw new UnauthorizedError();
+      } else {
+        return user;
+      }
+    } catch (error) {
+      throw new UnauthorizedError();
+    }
+  } else {
+    throw new ArgumentError();
+  }
 }
 
 export async function remove(request: Request, response: Response) {
@@ -85,15 +116,11 @@ export async function get(request: Request, response: Response) {
 }
 
 export async function update(request: Request, response: Response) {
-  if (!request.body.id) {
-    response.json(ok(await UserService.getAll()));
-    return;
-  }
+  const userOld = await checkJWT(request);
   const user = plainToClass(UserDto, request.body);
-  const id = Number(request.body.id);
   response.json(
     ok(
-      await UserService.update(id, {
+      await UserService.update(userOld.id, {
         name: user.name,
         phoneNumber: user.phoneNumber,
         city: user.city,

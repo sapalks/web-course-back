@@ -6,8 +6,10 @@ import { ArgumentError } from "../error";
 import { logger } from "../logger";
 import { NoticeService } from "../service/noticeService";
 import { ok } from "./utilsController";
+import { checkJWT } from "./userController";
 
 export async function create(request: Request, response: Response) {
+  await checkJWT(request);
   const notice = plainToClass(NoticeDto, request.body);
   const errors = await validate(notice, { skipMissingProperties: true });
   if (errors.length) {
@@ -30,6 +32,7 @@ export async function create(request: Request, response: Response) {
 }
 
 export async function remove(request: Request, response: Response) {
+  await checkJWT(request);
   if (!request.body.id) {
     throw new ArgumentError("id");
   }
@@ -56,6 +59,7 @@ export async function getAll(request: Request, response: Response) {
 }
 
 export async function update(request: Request, response: Response) {
+  await checkJWT(request);
   if (!request.body.id) {
     throw new ArgumentError("id");
   }

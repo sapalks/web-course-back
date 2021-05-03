@@ -95,11 +95,23 @@ export class UserService {
   public static async getToken(login: string, userId: Number): Promise<string> {
     return jwt.sign(
       {
-        login: login,
-        clientId: userId,
+        login,
+        userId,
       },
       "secret-key",
-      { expiresIn: 604800 }
+      { expiresIn: "7d" }
     );
+  }
+
+  public static async checkPassword(
+    login: string,
+    password: string
+  ): Promise<boolean> {
+    const repUser = getManager().getRepository(User);
+    const repPass = getManager().getRepository(Password);
+    const user = await repUser.findOne({ where: { phoneNumber: login } });
+    if (!user) return false;
+    const passwordData = await repPass.findOne({ where: { userId: user.id } });
+    return password == passwordData?.text;
   }
 }

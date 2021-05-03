@@ -1,4 +1,3 @@
-import { UserService } from "./service/userService";
 import onFinished from "on-finished";
 import { NextFunction, Request, Response } from "express";
 import { logger } from "./logger";
@@ -7,15 +6,9 @@ import {
   ArgumentError,
   NotFoundError,
   ProtocolError,
+  UnauthorizedError,
 } from "./error";
 import { error } from "./controllers/utilsController";
-
-const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const options = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "secret-key",
-};
 
 function commit(request: Request, response: Response): void {
   const started = (request as any)._state.started;
@@ -41,36 +34,6 @@ export function accessLog(
   next();
 }
 
-export function accessCheck(
-  request: Request,
-  response: Response,
-  next: NextFunction
-): void {
-  module.exports = (data: any) => {
-    data.use(
-      new JwtStrategy(
-        options,
-        async (
-          payload: { clientId: number },
-          done: (arg0: null, arg1: boolean) => void
-        ) => {
-          try {
-            const user = (await UserService.get(payload.clientId))[0];
-            if (user) {
-              done(null, true);
-            } else {
-              done(null, false);
-            }
-          } catch (e) {
-            console.log(e);
-          }
-        }
-      )
-    );
-  };
-  next();
-}
-
 export function errorRequestHandler(
   exception: Error,
   request: Request,
@@ -80,11 +43,14 @@ export function errorRequestHandler(
   let message = exception.message;
   let status = 500;
   if (exception instanceof ProtocolError) {
-    if (exception instanceof AlreadyExistsError) {
+    if (exception instanceof UnauthorizedError) {
       status = 401;
     }
     if (exception instanceof NotFoundError) {
       status = 404;
+    }
+    if (exception instanceof AlreadyExistsError) {
+      status = 409;
     }
     if (exception instanceof ArgumentError) {
       status = 422;

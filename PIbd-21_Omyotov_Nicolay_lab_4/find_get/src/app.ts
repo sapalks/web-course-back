@@ -3,7 +3,7 @@ import { createConnection } from "typeorm";
 import * as bodyParser from "body-parser";
 import express from "express";
 import { initRoutes } from "./routes";
-import { accessCheck, accessLog, errorRequestHandler } from "./middleware";
+import { accessLog, errorRequestHandler } from "./middleware";
 import { config } from "./entity";
 
 // create connection with database
@@ -16,7 +16,6 @@ createConnection(config)
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(accessLog);
-    app.use(accessCheck);
 
     // register all application routes
     initRoutes(app);
