@@ -1,9 +1,8 @@
-import { AlreadyExistsError } from "./../../../../_examples/rest/src/error";
 import { UserDto } from "./dto/userDTO";
 import { plainToClass } from "class-transformer";
 import { validate } from "class-validator";
 import { Request, Response } from "express";
-import { ArgumentError, NotFoundError } from "../error";
+import { AlreadyExistsError, ArgumentError, NotFoundError } from "../error";
 import { logger } from "../logger";
 import { UserService } from "../service/userService";
 import { ok } from "./utilsController";

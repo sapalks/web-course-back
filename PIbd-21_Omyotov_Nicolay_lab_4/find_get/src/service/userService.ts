@@ -88,7 +88,7 @@ export class UserService {
 
   public static async exists(phoneNumber: string): Promise<boolean> {
     const rep = getManager().getRepository(User);
-    let user = await rep.findOne({ where: { phoneNumber } });
+    let user = await rep.findOne({ where: { phoneNumber: phoneNumber } });
     return !!user;
   }
 
