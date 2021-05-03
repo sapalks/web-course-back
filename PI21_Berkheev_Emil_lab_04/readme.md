@@ -17,7 +17,6 @@
 ## Сервер обрабатывает следующие CRUD запросы: 
 
 ### POST /register - регистрация
-```js
 body:
 {
     "username": "login",
@@ -29,7 +28,6 @@ request:
 }
 
 ### POST /login - авторизация
-```js
 body:
 {
     "username": "login",
