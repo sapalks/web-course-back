@@ -41,6 +41,7 @@ export async function remove(request: Request, response: Response) {
 }
 
 export async function get(request: Request, response: Response) {
+  await checkJWT(request);
   if (!request.query.id) {
     throw new ArgumentError("id");
   }
@@ -54,6 +55,7 @@ export async function getAll(request: Request, response: Response) {
     response.json(ok(await NoticeService.getAll()));
     return;
   }
+  await checkJWT(request);
   const ownerId = Number(request.query.id);
   response.json(ok(await NoticeService.getAllByOwnerId(ownerId)));
 }
