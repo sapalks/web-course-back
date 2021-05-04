@@ -22,4 +22,4 @@
 
 ### Видеопример
 
-<https://yadi.sk/i/mWAbZYmjnDtfOQ>
+<https://yadi.sk/i/Eg4cX6zfZar1Lw>
