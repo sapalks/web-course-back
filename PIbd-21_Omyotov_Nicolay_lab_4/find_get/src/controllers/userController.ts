@@ -66,35 +66,34 @@ export async function login(request: Request, response: Response) {
   if (!(await UserService.exists(login))) {
     throw new NotFoundError();
   }
-  if (await UserService.checkPassword(login, password)) {
+  if (!(await UserService.checkPassword(login, password))) {
     throw new UnauthorizedError();
   }
 
-  response.json(ok(`Bearer ${await UserService.getToken(login, password)}`));
+  response.json(ok(`Bearer ${await UserService.getToken(login)}`));
 }
 
 export async function checkJWT(request: Request): Promise<User> {
   const token = request.body.token;
   if (token) {
     try {
-      let userId = undefined;
-      jwt.verify(token, "secret-key", function (_err: any, decoded: any) {
-        userId = decoded.payload.userId;
-      });
-      if (!userId) {
-        throw new UnauthorizedError();
-      }
-      const user = (await UserService.get(userId))[0];
-      if (!user) {
-        throw new UnauthorizedError();
+      const result = jwt.decode(token);
+      if (result instanceof Object) {
+        const user = (await UserService.get((result.userId as number) ?? 0))[0];
+        if (!user) {
+          throw new Error();
+        } else {
+          return user;
+        }
       } else {
-        return user;
+        throw new Error();
       }
     } catch (error) {
+      console.log(error.stack);
       throw new UnauthorizedError();
     }
   } else {
-    throw new ArgumentError();
+    throw new UnauthorizedError();
   }
 }
 

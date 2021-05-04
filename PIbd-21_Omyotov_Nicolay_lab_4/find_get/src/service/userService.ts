@@ -24,8 +24,8 @@ export class UserService {
         numSubscribtions: 0,
         numSubscribers: 0,
       });
-      repPass.save({
-        password,
+      await repPass.save({
+        text: password,
         userId: user.id,
       });
       return user;
@@ -92,11 +92,14 @@ export class UserService {
     return !!user;
   }
 
-  public static async getToken(login: string, userId: Number): Promise<string> {
+  public static async getToken(login: string): Promise<string> {
+    const rep = getManager().getRepository(User);
+    let user = await rep.findOne({ where: { phoneNumber: login } });
+    if (!user) throw new NotFoundError();
     return jwt.sign(
       {
         login,
-        userId,
+        userId: user?.id,
       },
       "secret-key",
       { expiresIn: "7d" }
