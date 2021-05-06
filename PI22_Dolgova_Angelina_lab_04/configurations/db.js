@@ -1,4 +1,3 @@
-  
 var Pool = require('pg').Pool
 var pool = new Pool({
 user: "postgres",

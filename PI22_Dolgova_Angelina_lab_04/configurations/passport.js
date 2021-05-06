@@ -7,17 +7,17 @@ const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: config.jwtKey
 }
+
 module.exports = passport => {
     passport.use(
         new JwtStrategy(options, async (payload, done) => {
             try {
-                db.query(`SELECT * FROM users where id = $1`, [payload.userId], (err, result) => {
-                    if (result.rowCount > 0) {
-                        done(null, user.rows[0])
-                    } else {
-                        done(null, false)
-                    }
-                })
+                const user = await db.query(`SELECT * FROM client where id = $1`, [payload.userId])
+                if (user.rowCount > 0) {
+                    done(null, user.rows[0])
+                } else {
+                    done(null, false)
+                }
             } catch (e) {
                 console.log(e)
             }

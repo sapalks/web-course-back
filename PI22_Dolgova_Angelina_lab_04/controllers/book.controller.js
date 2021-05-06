@@ -1,4 +1,4 @@
-const db = require("../db")
+const db = require("../configurations/db")
 
 class BookController {
     async createBook(req, res) {
