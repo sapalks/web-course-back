@@ -37,9 +37,9 @@ request:
 
 ### Примечания:
 Для выполнения задания лабораторной работы использовались следующие технологии:
-      * jsonwebtoken;
-      * passport passport-jwt;
-      * bcryptjs.
+* jsonwebtoken;
+* passport passport-jwt;
+* bcryptjs.
 
 
 [Видео c демонстрацией работы](https://drive.google.com/file/d/1oGC2L1gEWP9wcWTmwXUn55QRpf8IGrnJ/view?usp=sharing)
