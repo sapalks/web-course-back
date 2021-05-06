@@ -73,6 +73,11 @@ const AppRoutes: Route[] = [
     method: "get",
     action: system.ping,
   },
+  {
+    path: "/",
+    method: "get",
+    action: system.init,
+  },
 ];
 
 export function initRoutes(app: Express) {
