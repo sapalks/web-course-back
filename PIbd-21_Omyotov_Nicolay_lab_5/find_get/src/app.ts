@@ -6,6 +6,7 @@ import { initRoutes } from "./routes";
 import { accessLog, errorRequestHandler } from "./middleware";
 import { config } from "./entity";
 
+const PORT = process.env.PORT || "8080";
 // create connection with database
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
@@ -22,8 +23,8 @@ createConnection(config)
 
     app.use(errorRequestHandler);
     // run app
-    app.listen(3000);
+    app.listen(PORT);
 
-    console.log("Express application is up and running on port 3000");
+    console.log("Express application is up and running on port " + PORT);
   })
   .catch((error) => console.log("TypeORM connection error: ", error));
