@@ -1,0 +1,27 @@
+CREATE TABLE public.bulletinboards
+(
+    id integer NOT NULL DEFAULT nextval('bulletinboards_id_seq'::regclass),
+    "boardName" character varying COLLATE pg_catalog."default" NOT NULL,
+    "isDeleted" boolean NOT NULL,
+    CONSTRAINT bulletin_boards_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.advertisement
+(
+    id integer NOT NULL DEFAULT nextval('advertisement_id_seq'::regclass),
+    advertname character varying COLLATE pg_catalog."default",
+    price numeric(7,2),
+    date timestamp without time zone,
+    isdeleted boolean,
+    bulletinboardsid integer,
+    CONSTRAINT advertisement_pkey PRIMARY KEY (id),
+    CONSTRAINT advertisement_bulletin_boardsid_fkey FOREIGN KEY (bulletinboardsid)
+);
+CREATE TABLE public.users
+(
+    id integer NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    login character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    isdeleted boolean DEFAULT false,
+    CONSTRAINT users_pkey PRIMARY KEY (id)
+);
