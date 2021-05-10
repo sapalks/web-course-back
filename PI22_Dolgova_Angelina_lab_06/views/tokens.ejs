@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Tokens</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Goblin+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="tokenPage">
+        <div class="currentTokensLabel">
+            <span>Current tokens</span>
+        </div>
+        <div class="token">
+            <span class="nameLabel">Access token: <span class="dataLabel"><%= access_token %></span></span>
+        </div>
+        <div class="token">
+            <span class="nameLabel">Refresh token: <span class="dataLabel"><%= refresh_token %></span></span>
+        </div>
+        <div class="token">
+            <span class="nameLabel">Lifetime: <span class="dataLabel"><%= lifetime %></span></span>
+        </div>
+        <div class="token">
+            <span class="nameLabel">Type: <span class="dataLabel"><%= type %></span></span>
+        </div>
+        <div class="buttons">
+            <a class="button" href="/updateTokens"><span>Update</span></a>
+            <a class="button" href="/signOut"><span>Exit</span></a>
+        </div>
+    </div>
+</body>
+
+</html>

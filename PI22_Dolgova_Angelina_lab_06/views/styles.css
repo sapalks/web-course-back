@@ -1,0 +1,85 @@
+body {
+    background-color: white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content {
+    width: 100%;
+    margin: 5% 0 0 0;
+}
+.mainLabel
+{
+    color: #de0000;
+    font-size: 75px;
+    text-align: center;
+    font-family: 'Goblin One', cursive;
+}
+.currentTokensLabel {
+    color: #de0000;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Goblin One', cursive;
+    margin-bottom: 7%;
+}
+.signIn {
+    display: flex;
+    justify-content: center;
+}
+.button{
+    display: inline;
+    float: left;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: 'Goblin One', cursive;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid #333;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+}
+.button span {
+    position: relative;
+    z-index: 2;
+}
+.button:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #de0000;
+    transition: all .35s;
+}
+.button:hover {
+    color: #fff;
+}
+.button:hover:after {
+    width: 100%;
+}
+.tokenPage {
+    color: white;
+    padding-top: 5%;
+}
+.token {
+    text-align: center;
+    margin: 2% 7% 0 7%;
+}
+.nameLabel {
+    font-family: 'Goblin One', cursive;
+    color: #007a79;
+    font-size: 24px;
+}
+.dataLabel {
+    font-family: 'Goblin One', cursive;
+    color: black;
+    font-size: 16px;
+}
+.buttons {
+    margin: 5% 35%;
+}
