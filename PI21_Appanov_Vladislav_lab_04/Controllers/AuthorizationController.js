@@ -11,7 +11,7 @@ class AuthorizationController {
         }
 
         const hospitaluser = await db.query(`SELECT * FROM hospitaluser WHERE login = $1`, [login])
-        if (hospitaluser.login === login) {
+        if (hospitaluser.rows[0] != null) {
             res.status(400).json({ status: 'error', message: 'User exists' })
             return
         }

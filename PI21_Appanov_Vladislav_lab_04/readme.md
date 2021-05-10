@@ -20,3 +20,6 @@
 
 ***Видео***:
 https://drive.google.com/file/d/1UqKLjleAmuKbFFV_Jv0g3gONq1WmWnz9/view?usp=sharing
+
+***Исправил ошибку, показал как работает***:
+https://drive.google.com/file/d/1MPDgy0TUgvAfIMTxDSYxpPVEkv3kx3V9/view?usp=sharing
