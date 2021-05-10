@@ -1,0 +1,74 @@
+body {
+    font-family: 'Tahoma', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1000px;
+}
+
+table{
+    margin: 25px auto;
+}
+
+td{
+    text-align:  left;
+}
+
+td.header {
+    min-width: 150px;
+}
+td.info{
+    min-width: 900px;
+}
+td.file{
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/file.png);
+}
+td.folder{
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/folder.png);
+}
+caption {
+    caption-side: top;
+    color: blue;
+    text-align: center;
+    min-width: 200px;
+}
+
+.button {
+    background: black;
+    color: white;
+    display: block;
+    padding: 7px;
+    margin: 25px auto;
+    text-align: center;
+    width: 200px;
+}
+.button:hover{
+    background: white;
+    color: black;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+}
+
+.bigLabel {
+    color: black;
+    display: block;
+    font-size: 25px;
+    text-shadow: 3px 3px 5px black, 0 0 1em white;
+}
+
+a{
+    text-decoration: none;
+}
+
+.note{
+    color: grey;
+}
+
+.input_text{
+    width: 100%;
+} 
