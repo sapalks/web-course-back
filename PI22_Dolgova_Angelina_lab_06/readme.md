@@ -11,8 +11,8 @@
 
 ### Примечания:
 Для выполнения задания лабораторной работы использовались следующие технологии:
-    * yandex oauth;
-    * passport;
+* yandex oauth;
+* passport;
 
 
 [Видео c демонстрацией работы](https://drive.google.com/file/d/1G7AYn7AF9tfETaw7U9wD0OHnL7H1rqhQ/view?usp=sharing)
