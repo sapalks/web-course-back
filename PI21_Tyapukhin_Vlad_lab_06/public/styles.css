@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.get {
+    margin: 22% auto 25px;
+    color: white;
+}
+
+.main {
+    margin-top: 20%;
+}
+
+.buttons {
+    margin-bottom: 50px;
+}
+
+.token {
+    margin-top: 18%;
+    color: white;
+}
+
+.info {
+    color: green;
+}
+
+.info_time {
+    color: greenyellow;
+}
+
+.email {
+    font-size: 200%;
+}
+
+tr {
+    font-size: 150%;
+}

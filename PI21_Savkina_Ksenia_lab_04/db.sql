@@ -1,0 +1,25 @@
+CREATE TABLE POST(
+PostID SERIAL PRIMARY KEY,
+Name varchar(25) NOT NULL,
+Text varchar(30000) NOT NULL,
+CreatedAt date NULL,
+Views int NULL DEFAULT 0,
+isDel boolean NOT NULL DEFAULT FALSE);
+
+CREATE TABLE CUSTOMER(
+CustomerID SERIAL PRIMARY KEY,
+Nickname varchar(50) NOT NULL,
+Password varchar(20) NOT NULL,
+CreatedAt date NULL,
+isDel boolean NOT NULL DEFAULT FALSE);
+
+CREATE TABLE COMMENT(
+CommentID SERIAL PRIMARY KEY,
+CreatedAt date NULL,
+Content varchar(10000) NOT NULL,
+PostID int NOT NULL,
+isDel boolean NOT NULL DEFAULT FALSE,
+CONSTRAINT Comment_PostFK
+FOREIGN KEY (PostID)
+REFERENCES POST (PostID)
+ON DELETE CASCADE);

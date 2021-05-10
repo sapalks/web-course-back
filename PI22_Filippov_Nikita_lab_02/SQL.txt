@@ -1,0 +1,25 @@
+CREATE SEQUENCE IF NOT EXISTS Countries_seq
+INCREMENT BY 1 START WITH 400;
+
+CREATE SEQUENCE IF NOT EXISTS Hotels_seq
+INCREMENT BY 1 START WITH 300;
+
+CREATE TABLE Countries (
+	ID int DEFAULT nextval ('Countries_seq'),
+	Name varchar(50) NOT NULL,
+	Language varchar(50) NOT NULL,
+	IsDeleted bool DEFAULT false,
+	CONSTRAINT CountriesPK PRIMARY KEY(ID)
+);
+
+CREATE TABLE Hotels (
+	ID int DEFAULT nextval ('Hotels_seq'),
+	Name varchar(50) NOT NULL,
+	Rating int NULL,
+	CountrieID int NOT NULL,
+	Address varchar(50) NOT NULL,
+	ContactNumber varchar(12) NOT NULL,
+	IsDeleted bool DEFAULT false,
+	CONSTRAINT HotelsPK PRIMARY KEY(ID),
+	CONSTRAINT Hotels_CountriesFK FOREIGN KEY (CountrieID) REFERENCES Countries (ID)
+);
