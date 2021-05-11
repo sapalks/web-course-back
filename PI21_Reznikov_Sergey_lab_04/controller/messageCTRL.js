@@ -1,7 +1,4 @@
 const db = require('../db')
-const ExtractJwt = require('passport-jwt').ExtractJwt
-const passport = require('../config/passport')
-const jwtDecode =require('jwt-decode');
 
 class MessageController {
 
