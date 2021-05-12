@@ -1,21 +1,22 @@
 const Cache = require('node-cache')
 const TTL = 60 * 60 * 4
-let lastKey
 
 class Caching {
     constructor() {
         this.cache = new Cache({ stdTTL: TTL, checkperiod: TTL * 0.2, useClones: false });
+        this.lastKey = null
     }
 
     async save(key, value) {
-        lastKey = null
+        this.lastKey = null
         this.cache.set(key, value)
     }
 
     async get(key) {
         const value = this.cache.get(key);
         if (value) {
-            return value;
+            this.lastKey = key
+            return value
         }
     }
 
@@ -24,7 +25,7 @@ class Caching {
     }
 
     async getLastKey() {
-        return await lastKey
+        return this.lastKey
     }
 }
 
