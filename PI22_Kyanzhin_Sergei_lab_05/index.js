@@ -1,6 +1,6 @@
 const express = require('express')
 const passport = require('passport')
-const port = process.env.port || 8080
+const PORT = process.env.PORT || 8080
 
 const UserRoute = require('./Route/Users')
 const AdRoute = require('./Route/Ad')
@@ -20,6 +20,6 @@ app.use('/', UserRoute)
 app.use('/', AdRoute)
 app.use('/', AuthRoute)
 
-app.listen(port, () => {
-    console.log('server started on http://localhost:' + port);
+app.listen(PORT, () => {
+    console.log('server started on http://localhost:' + PORT);
 })
