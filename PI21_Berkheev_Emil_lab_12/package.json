@@ -1,0 +1,21 @@
+{
+  "name": "lab12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "jsonpath": "^1.1.1",
+    "mocha": "^8.4.0",
+    "pg": "^8.6.0",
+    "superagent": "^6.1.0"
+  }
+}
