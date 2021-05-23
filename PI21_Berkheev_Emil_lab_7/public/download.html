@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css"/>
+    </head>
+    <body>
+        <title>Download</title>
+        <form action="/download" method="post">
+            <table align="center">
+                <tr>
+                    <td><label class="col-sm col-form-label">Access_token:</label></td>
+                    <td width="550"><input name="access_token" value='' class="form-control" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label class="col-sm col-form-label">Shared_link:</label></td>
+                    <td width="550"><input name="shared_link" value='' class="form-control" autocomplete="off"></td>
+                </tr>
+            </table>
+            <div align="center">
+                <button type="submit" class="block">Download</button>
+            </div>
+        </form>
+    </body>
+</html>

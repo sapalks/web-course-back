@@ -1,0 +1,13 @@
+body {
+    background-color: rgba(107, 107, 93, 0.158);
+}
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #86d3b7;
+    padding: 14px 28px;
+    font-size: 46px;
+    cursor: pointer;
+    text-align: center;
+  }
