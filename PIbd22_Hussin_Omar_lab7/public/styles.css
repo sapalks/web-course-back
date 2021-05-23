@@ -1,0 +1,82 @@
+body {
+    background-color: rgb(30, 30, 30);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.get {
+    margin: 22% auto 25px;
+    color: white;
+}
+
+.main {
+    margin-top: 20%;
+}
+
+.buttons {
+    margin-bottom: 200px;
+}
+
+.token {
+    margin-top: 18%;
+    color: white;
+}
+
+.info {
+    color: rgb(170, 23, 35);
+}
+
+.info_time {
+    color: rgb(11, 184, 40);
+}
+
+.email {
+    font-size: 200%;
+}
+
+tr {
+    font-size: 150%;
+}
+.button {
+   
+    font-family: unset;
+    color: #000000;
+    font-size: 37px;
+    color: #14bd6e;
+    font-weight: 400;
+    text-shadow: 13px 6px 19px #00ff00;
+  
+    box-shadow: 0px 0px 40px #669252;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top: 3px dashed #ff00ff;
+    border-bottom: 6px dashed #00ff00;
+    border-left: 0px solid #0000ff;
+    border-right: 0px dashed #669252;
+    border-radius: 0px;
+  }
+  body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+        
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        button:hover {
+            opacity: 0.8;
+          }
+          body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            background: rgb(150, 126, 126);
+            margin: 20px;
+        }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css"/>
+    </head>
+    <body>
+        <title>Folders and Files</title>
+        <table class="token" align="center">
+            <tr class="FAF">
+                <td><label class="col-sm col-form-label">Folders:</label></td>
+                <td><label class="col-sm col-form-label info"><%= folders %></label></td>
+            </tr>
+            <tr class="FAF">
+                <td><label class="col-sm col-form-label">Files:</label></td>
+                <td><label class="col-sm col-form-label info_time"><%= files %></label></td>
+            </tr>
+        </table>
+    </body>
+    <div align="center">
+    <div class="button">
+        <form action="/download" method="get">
+            <button type="submit" class="btn btn-outline-warning btn-lg">Download</button>
+        </form>
+    </div>
+    
+</html>

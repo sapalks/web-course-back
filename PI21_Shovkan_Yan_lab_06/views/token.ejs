@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Токены</title>
+</head>
+
+<body>
+
+
+    <h1 style="text-align: center;">Текущие токены</h1>
+    <div>
+        <a>Access: </a>
+        <a>
+            <%= access_token %>
+        </a>
+    </div>
+    <div>
+        <a>Refresh: </a>
+        <a>
+            <%= refresh_token %>
+        </a>
+    </div>
+
+    <button onclick="window.location.href='/updateToken'">Получить новые токены</button>
+    <button onclick="window.location.href='/logout'">Выход</button>
+</body>
+
+</html>

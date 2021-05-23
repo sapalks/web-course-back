@@ -1,0 +1,85 @@
+body 
+{
+    background-color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.content
+{
+    width: 100%;
+    margin: 50% 0 0 0;
+}
+.labelHello
+{
+    color: white;
+    padding-bottom: 15%;
+}
+.Login
+{
+    display: flex;
+    justify-content: center;
+}
+h1
+{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.buttonLogin
+{
+    margin: 200;
+    color: rgb(20, 18, 18); 
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none; 
+    background: rgb(224, 220, 220); 
+    padding: .7em 1.5em; 
+    outline: none; 
+}
+.buttonLogin:hover { background: rgb(245, 245, 245); } 
+.buttonLogin:active { background: rgb(83, 83, 83); color: rgb(245, 245, 245);} 
+
+.mainPage 
+{
+    color: white;
+    padding-top: 15%;
+}
+
+.header
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.buttons
+{
+    margin: 5% 35%;
+}
+
+.buttonAccess
+{
+    color: rgb(20, 18, 18); 
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none; 
+    background: rgb(224, 220, 220); 
+    padding: .7em 1.5em; 
+    outline: none; 
+}
+.buttonAccess:hover { background: rgb(245, 245, 245); } 
+.buttonAccess:active { background: rgb(83, 83, 83); color: rgb(245, 245, 245);} 
+
+.buttonRefresh
+{
+    color: rgb(20, 18, 18); 
+    text-decoration: none; 
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    user-select: none; 
+    background: rgb(224, 220, 220); 
+    padding: .7em 1.5em; 
+    outline: none; 
+}
+.buttonRefresh:hover { background: rgb(245, 245, 245); } 
+.buttonRefresh:active { background: rgb(83, 83, 83); color: rgb(245, 245, 245);} 

@@ -1,0 +1,25 @@
+{
+  "name": "lab_03",
+  "version": "1.0.0",
+  "description": "O_o",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "pretest:e2e": "node dbCleanup.js",
+    "test:e2e": "cucumber-js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "sync-request": "^6.1.0"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.2.1",
+    "nodemon": "^2.0.7"
+  }
+}

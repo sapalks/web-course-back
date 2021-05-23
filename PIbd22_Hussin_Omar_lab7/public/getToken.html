@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css"/>
+    </head>
+    <body>
+        <title>Token information</title>
+        <table class="token" align="center">
+            <tr class="token_info">
+                <td><label class="col-sm col-form-label">access_token:</label></td>
+                <td><label class="col-sm col-form-label info"><%= access_token %></label></td>
+        </table>
+    </body>
+
+
+    <div align="center">
+    <div class="button">            
+        <form action="/getInfo" method="get">
+            <button type="submit" class="btn btn-outline-warning btn-lg">Get Info</button>
+        </form>
+    </div>
+    
+    
+</html>

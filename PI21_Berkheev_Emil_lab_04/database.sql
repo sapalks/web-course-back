@@ -1,0 +1,29 @@
+CREATE TABLE team (  
+ teamID int NOT NULL PRIMARY KEY,  
+ name VARCHAR(100) NOT NULL,  
+ isDeleted boolean NOT NULL DEFAULT FALSE);  
+
+CREATE TABLE player ( 
+ playerID int NOT NULL PRIMARY KEY, 
+ login VARCHAR(100) NOT NULL, 
+ mail VARCHAR(100) NOT NULL, 
+ division VARCHAR(100) NOT NULL,
+ isDeleted boolean NOT NULL DEFAULT FALSE,
+ teamID int NOT NULL, 
+ FOREIGN KEY (teamID) 
+ REFERENCES team (teamID) ON DELETE CASCADE ON UPDATE CASCADE);  
+
+CREATE TABLE users (
+	id int NOT NULL PRIMARY KEY,
+	username VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL
+);
+
+
+CREATE SEQUENCE team_seq START 1; 
+CREATE SEQUENCE player_seq START 1;
+CREATE SEQUENCE users_seq START 1;
+
+ALTER TABLE users ALTER COLUMN id SET DEFAULT nextval('users_seq');
+ALTER TABLE team ALTER COLUMN teamID SET DEFAULT nextval('team_seq');
+ALTER TABLE player ALTER COLUMN playerID SET DEFAULT nextval('player_seq');

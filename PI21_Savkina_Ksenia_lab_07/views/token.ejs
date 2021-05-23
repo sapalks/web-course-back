@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Auth app</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="container ">
+            <div class="row justify-content-md-center">
+                <div class="col">
+                    <table class="table">
+                        <tbody id="text_col">
+                            <tr>
+                                <th>Код</th>
+                                <td><%= code %></td>
+                            </tr>
+                            <tr>
+                                <th>Токен</th>
+                                <td><%= access_token %></td>
+                            </tr>
+                            <tr>
+                                <th>Время действия</th>
+                                <td><%= expires_in %></td>
+                            </tr>
+                            <tr>
+                                <th>Тип токена</th>
+                                <td><%= token_type %></td>
+                            </tr>
+                            <tr>
+                                <th>ID аккаунта</th>
+                                <td><%= account_id %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto"><a class="btn" href="/filesAndFolders">Папки и файлы</a></div>
+                <div class="col-md-auto"><a class="btn" href="/">На главную</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
