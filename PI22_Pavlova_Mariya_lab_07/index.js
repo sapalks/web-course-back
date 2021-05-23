@@ -1,30 +1,46 @@
 import { Dropbox } from 'dropbox'
-import bodyParser from "body-parser";
 import express from "express";
+import bodyParser from "body-parser";
+import fetch from "node-fetch";
+import multer from "multer";
+const upload = multer();
+const type = upload.single('file')
+const port = process.env.DEV_SERVER_PORT || 5000;
 const app = express();
-const port = process.env.PORT || 5000
-app.set('view engine', 'ejs')
+app.use('/static', express.static('static'))
+app.use(bodyParser.json());
+
+
+
+// Запуск сервера
 app.listen(port, () => {
-    console.log('Server has been started');
+    console.log("Server has been started port=${port}...")
 })
 
-const urlencodedParser = bodyParser.urlencoded({extended : false});
-
-app.set('view engine', 'ejs')
-app.use(bodyParser .json());
-app.use(urlencodedParser)
+app.get('/', function(req, res){
+    res.sendFile(__dirname + "/static/index.html");
+});
 
 const dbx = new Dropbox({
-    accessToken: 'xzb-J0pd8ygAAAAAAAAAAcjnhPQ3YaoaB6mQ3Xhye7uvt77a_UgyaA_cw9UYpP_G',
+    accessToken: 'sl.AxXq2YaqDi_xI-4xwEirLVmrulft8pHw7kv2q2IjIn9myNGu4lWjKhURRUKFyrJoWa6gvfXz8hhLSAn60Yomb-8gIu6ZSE7UxC4c_1RbFLy80LcVzBivNCJFIgFpw246JDbNMDD5OCyF',
     fetch
 })
 
 app.get('/files', (req, res) => {
     dbx.filesListFolder({
-        PATH: ''
+        path: ''
     }).then(json => {
-        res.render('files', {result: json.result})
+        res.send(json.result.entries);
     })
 })
 
-
+app.post('/upload-file', type, (req, res) => {
+    const file = req.file;
+    dbx.filesUpload({path: '/' + file.originalname, contents: file})
+        .then(function(response) {
+            res.send({data: response});
+        })
+        .catch(function(error) {
+            res.send({error})
+        });
+});
