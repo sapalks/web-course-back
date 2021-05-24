@@ -1,11 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class NoticeSubCategory {
-  @PrimaryGeneratedColumn("increment")
-  id: Number;
-
-  @Column({ name: "noticeid" })
+  @PrimaryColumn({ name: "noticeid" })
   noticeId: Number;
 
   @Column({ name: "sub_categoryid" })

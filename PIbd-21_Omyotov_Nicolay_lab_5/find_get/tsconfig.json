@@ -11,10 +11,15 @@
       "target": "es2017",
       "sourceMap": true,
       "outDir": "./dist",
-      "baseUrl": "./"
+      "baseUrl": "./",
+      "noImplicitAny": false
    },
    "exclude": [
       "node_modules",
       "dist"
-   ]
+   ],
+   "typeRoots": [
+      "./typings",
+      "./node_modules/@types/"
+    ]
 }

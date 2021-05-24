@@ -1,5 +1,5 @@
 import { Request, Response, Express } from "express";
-import { user, system, notice } from "./controllers";
+import { user, system, notice, category } from "./controllers";
 
 export class Route {
   public constructor(
@@ -15,12 +15,12 @@ export class Route {
 const AppRoutes: Route[] = [
   {
     path: "/register",
-    method: "get",
+    method: "post",
     action: user.register,
   },
   {
     path: "/login",
-    method: "get",
+    method: "post",
     action: user.login,
   },
   {
@@ -49,6 +49,11 @@ const AppRoutes: Route[] = [
     action: notice.getAll,
   },
   {
+    path: "/notices/subcategory",
+    method: "get",
+    action: notice.getAllBySubCategory,
+  },
+  {
     path: "/notice",
     method: "get",
     action: notice.get,
@@ -67,6 +72,11 @@ const AppRoutes: Route[] = [
     path: "/notice",
     method: "delete",
     action: notice.remove,
+  },
+  {
+    path: "/categories",
+    method: "get",
+    action: category.getAll,
   },
   {
     path: "/ping",

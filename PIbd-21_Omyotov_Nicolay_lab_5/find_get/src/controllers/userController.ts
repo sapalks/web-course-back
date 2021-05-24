@@ -41,17 +41,8 @@ export async function register(request: Request, response: Response) {
   if (await UserService.exists(user.phoneNumber)) {
     throw new AlreadyExistsError();
   }
-
-  response.json(
-    ok(
-      await UserService.add(
-        user.name,
-        user.phoneNumber,
-        user.city,
-        user.password
-      )
-    )
-  );
+  await UserService.add(user.name, user.phoneNumber, user.city, user.password);
+  response.json(ok());
 }
 
 export async function login(request: Request, response: Response) {
@@ -70,11 +61,11 @@ export async function login(request: Request, response: Response) {
     throw new UnauthorizedError();
   }
 
-  response.json(ok(`Bearer ${await UserService.getToken(login)}`));
+  response.json(ok({ ...(await UserService.getToken(login)) }));
 }
 
 export async function checkJWT(request: Request): Promise<User> {
-  const token = request.body.token;
+  const token = request.header("token");
   if (token) {
     try {
       const result = jwt.decode(token);

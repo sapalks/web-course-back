@@ -92,18 +92,21 @@ export class UserService {
     return !!user;
   }
 
-  public static async getToken(login: string): Promise<string> {
+  public static async getToken(login: string): Promise<object> {
     const rep = getManager().getRepository(User);
     let user = await rep.findOne({ where: { phoneNumber: login } });
     if (!user) throw new NotFoundError();
-    return jwt.sign(
-      {
-        login,
-        userId: user?.id,
-      },
-      "secret-key",
-      { expiresIn: "7d" }
-    );
+    return {
+      ...user,
+      token: jwt.sign(
+        {
+          login,
+          userId: user?.id,
+        },
+        "secret-key",
+        { expiresIn: "7d" }
+      ),
+    };
   }
 
   public static async checkPassword(

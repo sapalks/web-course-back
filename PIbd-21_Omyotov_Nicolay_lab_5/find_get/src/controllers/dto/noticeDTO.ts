@@ -6,6 +6,10 @@ export class NoticeDto {
   @Expose()
   purchaseName: string;
 
+  @IsDefined()
+  @Expose()
+  subCategoryId: number;
+
   @IsOptional()
   @Expose()
   ownerId: number;
