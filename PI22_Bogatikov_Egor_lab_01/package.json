@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Для запуска сервера в терминале нужно ввести команду **node server.js** После чего запустится сервер, обрабатывающий **GET** запросы: * **/ping** - выводит **{status: 'ok'}** * **/weekday** - выводит день недели, учитывая параметр запроса **day**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^6.0.0",
+    "pino": "^6.11.0",
+    "todo-list": "0.0.3",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "pino-pretty": "^4.5.0"
+  },
+  "keywords": []
+}
