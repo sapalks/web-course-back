@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css"/>
+    </head>
+    <body>
+        <title>Upload</title>
+        <form action="/upload" method="post">
+            <table align="center">
+                <tr>
+                    <td><label class="col-sm col-form-label">Access_token:</label></td>
+                    <td width="550"><input name="access_token" value='' class="form-control" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label class="col-sm col-form-label">Filename:</label></td>
+                    <td width="550"><input name="filename" value='' class="form-control" autocomplete="off"></td>
+                </tr>
+            </table>
+            <div align="center">
+                <button type="submit" class="block"">Upload</button>
+            </div>
+        </form>
+    </body>
+</html>
