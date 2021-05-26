@@ -20,7 +20,7 @@ class playerController {
         }
         const id = req.params.teamID;
         const result = await db.query('SELECT * FROM player WHERE isDeleted = FALSE AND teamID = $1', [id]);
-        cache.save('playerInTeam ${id}', result.rows)
+        cache.save('playerInTeam', result.rows)
         res.json(result.rows);
     }
 
@@ -39,7 +39,7 @@ class playerController {
         const { login, mail, division, teamID } = req.body;
         const result = await db.query('INSERT INTO player(login, mail, division, teamID) VALUES ($1, $2, $3, $4) RETURNING *', [login, mail, division, teamID]);
         cache.delete('player ${id}')
-        cache.delete('playerInTeam ${id}')
+        cache.delete('playerInTeam')
         cache.delete('players')
         res.json(result.rows[0]);  
     }
@@ -49,7 +49,7 @@ class playerController {
         const result = await db.query('UPDATE player SET login = $1, mail = $2, division = $3, teamID = $4 WHERE playerID = $5 AND isDeleted = FALSE RETURNING *',
         [login, mail, division, teamID, playerID]);
         cache.delete('player ${id}')
-        cache.delete('playerInTeam ${id}')
+        cache.delete('playerInTeam')
         cache.delete('players')
         res.json(result.rows[0]);
     }
@@ -58,7 +58,7 @@ class playerController {
         const id = req.params.id;
         await db.query('UPDATE player SET isDeleted = TRUE WHERE playerID = $1 RETURNING *', [id]);
         cache.delete('player ${id}')
-        cache.delete('playerInTeam ${id}')
+        cache.delete('playerInTeam')
         cache.delete('players')
         res.json('player with id: ' + id + ' was deleted');
     }
