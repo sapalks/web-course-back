@@ -4,7 +4,7 @@ const cache = require('../cache.js')
 class playerController {
 
     async getAllPlayers(req, res) {
-        const cached = await cache.get('players')
+        const cached = await cache.get(`players`)
         if (cached) {
             return res.json(cached)
         }
