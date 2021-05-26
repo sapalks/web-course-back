@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>Mariya's dropbox</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="../node_modules/dropbox/dist/Dropbox-sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+            integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<div>
+    <div class="content-bottom">
+        <ul id="listFilesId"></ul>
+        <button class="btn" onclick="getAllFiles()">GET FILES</button>
+        <h1></h1>
+        <form id="upload-form">
+            <input type="file" id="file-upload"/>
+            <button id="upload-form">upload</button>
+            <h2 id="results"></h2>
+        </form>
+        <form id="download-form">
+            <input type="text" id="shared-link" placeholder="Dropbox shared link to a file"/>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("upload-form").addEventListener("submit", uploadFile, false);
+    document.getElementById("download-form").addEventListener("submit", downloadFile, false);
+    const ACCESS_TOKEN = 'xzb-J0pd8ygAAAAAAAAAAcjnhPQ3YaoaB6mQ3Xhye7uvt77a_UgyaA_cw9UYpP_G'
+
+    window.onload = function () {
+        getAllFiles();
+    }
+
+    function getAllFiles() {
+        const displaySpellList = document.getElementById('listFilesId');
+        displaySpellList.innerHTML = "";
+        axios.get('/files')
+            .then(res => {
+                console.log('res', res.data);
+                res.data.forEach((file, index) => {
+                    const newLI = document.createElement("li"),
+                        newContent = document.createTextNode(file.name);
+                    newLI.appendChild(newContent);
+
+                    displaySpellList.appendChild(newLI);
+                })
+            })
+    }
+
+    function uploadFile(event) {
+        event.preventDefault();
+        const fileInput = document.getElementById('file-upload');
+        const file = fileInput.files[0];
+        const formData = new FormData()
+        formData.append('file', file)
+
+        axios({
+            method: "post",
+            url: "/upload-file",
+            data: formData,
+            headers: {"Content-Type": "multipart/form-data"},
+        })
+            .then(function (response) {
+                const results = document.getElementById('results');
+                const br = document.createElement("br");
+                results.appendChild(document.createTextNode('File uploaded!'));
+                results.appendChild(br);
+                console.log(response);
+                getAllFiles();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    function downloadFile(event) {
+        event.preventDefault();
+        var dbx = new Dropbox.Dropbox({accessToken: ACCESS_TOKEN});
+        dbx.sharingGetSharedLinkFile({url: SHARED_LINK})
+            .then(function (data) {
+                console.log(data)
+                var link = document.createElement("a");
+                link.setAttribute("href", URL.createObjectURL(data.result.fileBlob));
+                link.setAttribute("download", data.result.name);
+                link.click();
+            })
+    }
+</script>
+</body>
+</html>
