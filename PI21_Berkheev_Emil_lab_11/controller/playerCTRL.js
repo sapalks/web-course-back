@@ -15,25 +15,23 @@ class playerController {
 
     async getPlayerInTeams(req, res) {
         const cached = await cache.get('playerInTeam')
-        const Id = req.params.id;
         if (cached) {
             return res.json(cached)
         }
         const id = req.params.teamID;
         const result = await db.query('SELECT * FROM player WHERE isDeleted = FALSE AND teamID = $1', [id]);
-        cache.save('playerInTeam ${Id}', result.rows)
+        cache.save('playerInTeam ${id}', result.rows)
         res.json(result.rows);
     }
 
     async getPlayer(req, res) { 
         const cached = await cache.get('player')
-        const Id = req.params.id;
         if (cached) {
             return res.json(cached)
         }
         const id = req.params.id;
         const result = await db.query('SELECT * FROM player WHERE isDeleted = FALSE AND playerID = $1', [id]);
-        cache.save('player ${Id}', result.rows[0])
+        cache.save('player ${id}', result.rows[0])
         res.json(result.rows[0]);
     }
 
