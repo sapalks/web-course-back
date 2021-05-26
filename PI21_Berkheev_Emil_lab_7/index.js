@@ -27,7 +27,7 @@ app.get('/main', function(req, res) {
 });
 
 app.post('/main', function(req, res) {
-    res.redirect('https://www.dropbox.com/oauth2/authorize?client_id=aip7d8nrxq3ygxw&response_type=code&redirect_uri=' + REDIRECT_URI);
+    res.redirect('https://www.dropbox.com/oauth2/authorize?client_id=mhc5ex0c83ub49z&response_type=code&redirect_uri=' + REDIRECT_URI);
 });
 
 app.get('/auth', function (req, res) {
