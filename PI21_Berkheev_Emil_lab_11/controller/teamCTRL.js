@@ -4,12 +4,12 @@ const cache = require('../cache.js')
 class teamController {
 
     async geAllTeams(req, res) {
-        const cached = await cache.get('team')
+        const cached = await cache.get('teams')
         if (cached) {
             return res.json(cached)
         }
         const result = await db.query('SELECT * FROM team WHERE isDeleted = FALSE');
-        cache.save('team', result.rows)
+        cache.save('teams', result.rows)
         res.json(result.rows);
     }
 
@@ -28,6 +28,7 @@ class teamController {
         const {name} = req.body;
         const result = await db.query('INSERT INTO team(name) VALUES ($1) RETURNING *', [name]);
         cache.delete('team')
+        cache.delete('teams')
         res.json(result.rows[0]);
     }
 
@@ -35,6 +36,7 @@ class teamController {
         const {teamID, name} = req.body;
         const result = await db.query('UPDATE team SET name = $1 WHERE teamID = $2 AND isDeleted = FALSE RETURNING *', [name, teamID]);
         cache.delete('team')
+        cache.delete('teams')
         res.json(result.rows[0]);
     }
 
@@ -42,6 +44,7 @@ class teamController {
         const id = req.params.id;
         await db.query('UPDATE team SET isDeleted = TRUE WHERE teamID = $1 RETURNING *', [id]);
         cache.delete('team')
+        cache.delete('teams')
         res.json('team with id: ' + id + ' was deleted');
     }
     async isCached(req, res) {
