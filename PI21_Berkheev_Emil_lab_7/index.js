@@ -43,7 +43,7 @@ function getToken(res, code) {
         method: 'post',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
-            'Authorization': 'Basic ' + Buffer.from('aip7d8nrxq3ygxw:d0k583k8sarchio', 'utf8').toString('base64')
+            'Authorization': 'Basic ' + Buffer.from('mhc5ex0c83ub49z:v6zgir3lhtzxspw', 'utf8').toString('base64')
         }
     };
     fetch(GET_TOKEN_URI, options)
