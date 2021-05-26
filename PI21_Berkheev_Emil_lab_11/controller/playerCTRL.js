@@ -15,31 +15,33 @@ class playerController {
 
     async getPlayerInTeams(req, res) {
         const cached = await cache.get('playerInTeam')
+        const Id = req.params.id;
         if (cached) {
             return res.json(cached)
         }
         const id = req.params.teamID;
         const result = await db.query('SELECT * FROM player WHERE isDeleted = FALSE AND teamID = $1', [id]);
-        cache.save('playerInTeam', result.rows)
+        cache.save('playerInTeam ${Id}', result.rows)
         res.json(result.rows);
     }
 
     async getPlayer(req, res) { 
         const cached = await cache.get('player')
+        const Id = req.params.id;
         if (cached) {
             return res.json(cached)
         }
         const id = req.params.id;
         const result = await db.query('SELECT * FROM player WHERE isDeleted = FALSE AND playerID = $1', [id]);
-        cache.save('player', result.rows[0])
+        cache.save('player ${Id}', result.rows[0])
         res.json(result.rows[0]);
     }
 
     async createPlayer(req, res) {
         const { login, mail, division, teamID } = req.body;
         const result = await db.query('INSERT INTO player(login, mail, division, teamID) VALUES ($1, $2, $3, $4) RETURNING *', [login, mail, division, teamID]);
-        cache.delete('player')
-        cache.delete('playerInTeam')
+        cache.delete('player ${id}')
+        cache.delete('playerInTeam ${id}')
         cache.delete('players')
         res.json(result.rows[0]);  
     }
@@ -48,8 +50,8 @@ class playerController {
         const {playerID, login, mail, division, teamID} = req.body;
         const result = await db.query('UPDATE player SET login = $1, mail = $2, division = $3, teamID = $4 WHERE playerID = $5 AND isDeleted = FALSE RETURNING *',
         [login, mail, division, teamID, playerID]);
-        cache.delete('player')
-        cache.delete('playerInTeam')
+        cache.delete('player ${id}')
+        cache.delete('playerInTeam ${id}')
         cache.delete('players')
         res.json(result.rows[0]);
     }
@@ -57,8 +59,8 @@ class playerController {
     async deletePlayer(req, res) {
         const id = req.params.id;
         await db.query('UPDATE player SET isDeleted = TRUE WHERE playerID = $1 RETURNING *', [id]);
-        cache.delete('player')
-        cache.delete('playerInTeam')
+        cache.delete('player ${id}')
+        cache.delete('playerInTeam ${id}')
         cache.delete('players')
         res.json('player with id: ' + id + ' was deleted');
     }
