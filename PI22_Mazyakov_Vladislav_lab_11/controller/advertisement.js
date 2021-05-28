@@ -13,22 +13,31 @@ class AdvertisementController {
     }
 
     async getAdvert(req, res) {
-      const cached = await cache.get('advert')
+      const id = req.query.id
+      const bulletinboardsid = req.query.bulletinboardsid
+      let cached = null
+      if (id != null) {
+        cached = await cache.get('advert'+id)
+      }
+      else if (bulletinboardsid ) {
+        cached = await cache.get('advert'+bulletinboardsid)
+      }
+      else {
+        cached= await cache.get('advert')
+      }
         if (cached) {
             return res.json(cached)
         }
-
-        const { id, bulletinboardsid } = req.query
         if (id) {
             const advert = await db.query('SELECT * FROM advertisement where id = $1 and isDeleted = false', [id])
-            cache.save('advert', advert.rows[0])
+            cache.save('advert'+id, advert.rows[0])
             res.json(advert.rows[0]);
             return
         }
         if (bulletinboardsid) {
             const advert = await db.query(
                 'SELECT * FROM advertisement where bulletinboardsid = $1 and isDeleted = false', [bulletinboardsid])
-                cache.save('advert', adverts.rows)
+                cache.save('advert'+bulletinboardsid, adverts.rows)
                 res.json(adverts.rows);
         } else {
             const adverts = await db.query('SELECT * FROM advertisement where isDeleted = false')
