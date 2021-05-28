@@ -12,14 +12,20 @@ class BoardController {
     }
 
     async getBoards(req, res) {
-      const cached = await cache.get('board')
+      const id = req.query.id
+      let cached = null
+      if (id == null) {
+      cached= await cache.get('board')
+      }
+      else {
+      cached = await cache.get('board'+id)
+      }
         if (cached) {
             return res.json(cached)
         }
-        const id = req.query.id
         if (id) {
             const board = await db.query('SELECT * FROM bulletinboards where id = $1 and isDeleted = false', [id])
-            cache.save('board', board.rows[0])
+            cache.save('board'+id, board.rows[0])
             res.json(board.rows[0])
         } else {
             const boards = await db.query('SELECT * FROM bulletinboards where isDeleted = false')
