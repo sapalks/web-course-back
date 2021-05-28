@@ -1,0 +1,20 @@
+{
+  "name": "ip_lab1",
+  "version": "1.0.0",
+  "description": "lab1 IP-backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "author": "Mariya Pavlova",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "winston": "^3.3.3"
+  }
+}

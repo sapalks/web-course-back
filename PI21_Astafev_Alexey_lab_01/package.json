@@ -1,0 +1,15 @@
+{
+  "name": "pi21_astafev_alexey_lab_01",
+  "version": "1.0.0",
+  "description": "Чтобы запустить сервер необходимо:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

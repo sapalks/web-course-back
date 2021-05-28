@@ -1,0 +1,17 @@
+
+.sampleButton{
+    width: 300px;
+    height: 60px;
+    font-size: 28px;
+    font-family: 'Arial';
+    font-weight: 800;
+    border: 5px solid rgb(212, 32, 32);
+    text-align: center;
+}
+.dataRow{
+    width: 160px;
+    height: 20px;
+    font-weight: 600;
+    font-family: 'Arial';
+    font-size: 22px;
+}

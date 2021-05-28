@@ -10,4 +10,4 @@
 * Yandex OAuth
 * Passport
 
-### Видео: https://disk.yandex.ru/i/XDDiR1TVY7k2-A
+### Видео: https://disk.yandex.ru/i/djDPq0SnswebpQ

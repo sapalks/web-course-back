@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+:root {
+    --primary: rgba(23, 190, 187, 1);
+    --secondary: rgba(240, 166, 202, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+html, body {
+    background: linear-gradient(120deg, var(--primary), var(--secondary));
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container h1 {
+    margin: 0.5em auto;
+    color: #FFF;
+    text-align: center;
+}
+
+.join-container {
+    background: rgba(255, 255, 255, 0.05);
+    width: 700px;
+    height: 50%;
+    border-radius: 0.2em;
+    position: relative;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+.join-container #room-container {
+    background: rgba(255, 255, 255, 0.1);
+    width: 25%;
+    height: 100%;
+    float: right;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+}
+
+.join-container #room-container h1 {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9em;
+    padding: 1em;
+    margin: 0;
+    font-weight: 300;
+    text-align: center;
+}
+
+.join-container #room-container ._room {
+    float: left;
+    text-align: left;
+    margin: 0.5em 2em;
+    font-size: 0.8em;
+    font-weight: 300;
+    color: #FFF;
+    width: 200px;
+}
+
+.join-container #room-container a {
+    font-size: 0.8em;
+    font-weight: 300;
+    float: left;
+    text-align: center;
+    margin-left: 2em;
+
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--secondary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.join-container #room-container a:hover {
+    background: var(--secondary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+.join-container form {
+    text-align: center;
+    height: 100%;
+    width: 75%;
+}
+
+.join-container form input {
+    border: none;
+    border-bottom: 3px solid white;
+    margin-top: 25%;
+    margin-right: 7%;
+    margin-left: 7%;
+    width: 75%;
+    padding: 0.5em;
+    background: none;
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.join-container form input:focus {
+    outline: none !important;
+}
+
+.join-container form button {
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary);
+    padding: 0.3rem 1.5rem;
+    margin-top: 1.5em;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    width: 170px;
+}
+
+.join-container form button:hover {
+    background: var(--primary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+.chat-container {
+    background: rgba(255, 255, 255, 0.05);
+    width: 1000px;
+    height: 90%;
+    border-radius: 0.2em;
+    position: relative;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chat-container #message-container {
+    float: left;
+    width: 100%;
+}
+
+.chat-container #message-container div {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1em 1em;
+    height: auto;
+    width: 500px;
+    border-radius: 5px;
+    margin: 1em 1em;
+    color: #FFF;
+    font-size: 1em;
+}
+
+.container #send-container #message-input {
+    background: rgba(255, 255, 255, 0.03);
+    float: left;
+    border: none;
+    width: 55%;
+    padding: 1.2em;
+    outline: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+}
+
+.container #send-container form input:focus {
+    outline: none !important;
+}
+
+.container #send-container button {
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary);
+    border-radius: 4px;
+    margin-left: 1.5em;
+    border: none;
+    width: 120px;
+    height: 40px;
+}
+
+.container #send-container button:disabled {
+    font-size: 18px;
+    background: #85807F;
+    color: white;
+    border-radius: 4px;
+    margin-left: 1.5em;
+    border: none;
+    width: 120px;
+    height: 40px;
+}
+
+.container #send-container button:enabled:hover {
+    background: var(--primary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+#exit-button {
+    font-size: 18px;
+    margin-top: 1.5em;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--secondary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    width: 170px;
+}
+
+#exit-button:hover {
+    background: var(--secondary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+#room-label {
+    width: 70%;
+    float: left;
+}
+
+#send-container {
+    position: fixed;
+    float: left;
+    padding-bottom: 30px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+}

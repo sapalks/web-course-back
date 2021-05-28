@@ -1,0 +1,14 @@
+CREATE TABLE author (
+	author_id serial PRIMARY KEY,
+	nickname varchar(50) NOT NULL,
+	is_Deleted bool DEFAULT false
+);
+CREATE TABLE picture (
+	picture_id serial PRIMARY KEY,
+	picture_name varchar(255) DEFAULT 'Без названия',
+	description text,
+	"extension" varchar(15) NOT NULL,
+	"data" bytea NOT NULL,
+	is_Deleted bool DEFAULT false,
+	author_id int REFERENCES author (author_id) ON DELETE CASCADE ON UPDATE CASCADE
+);

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>File management app | Files</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+<body>
+<div class="container">
+    <h1>Files</h1>
+    <div class="files-folders-container">
+        <div class="folders-container">
+            <% folders.forEach(function(item) { %>
+                <div id="folder"></div>
+                <div><%= item.name %></div>
+            <% }); %>
+        </div>
+        <div class="files-container">
+            <% files.forEach(function(item) { %>
+                <div id="file"></div>
+                <div><%= item.name %></div>
+                <button class="download-btn" type="submit"
+                        onclick="location.href = '/download?shared_link=<%= item.path_display %>'">Download
+                </button>
+            <% }); %>
+        </div>
+        <div class="goto-upload-container">
+            <button class="upload-btn" type="submit" onclick="location.href = '/uploading'">Upload files</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

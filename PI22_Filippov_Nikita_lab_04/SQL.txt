@@ -1,0 +1,37 @@
+CREATE SEQUENCE IF NOT EXISTS Countries_seq
+INCREMENT BY 1 START WITH 400;
+
+CREATE SEQUENCE IF NOT EXISTS Hotels_seq
+INCREMENT BY 1 START WITH 300;
+
+CREATE SEQUENCE IF NOT EXISTS User_seq
+INCREMENT BY 1 START WITH 500;
+
+CREATE TABLE Countries (
+	ID int DEFAULT nextval ('Countries_seq'),
+	Name varchar(50) NOT NULL,
+	Language varchar(50) NOT NULL,
+	IsDeleted bool DEFAULT false,
+	CONSTRAINT CountriesPK PRIMARY KEY(ID)
+);
+
+CREATE TABLE Hotels (
+	ID int DEFAULT nextval ('Hotels_seq'),
+	Name varchar(50) NOT NULL,
+	Rating int NULL,
+	CountrieID int NOT NULL,
+	Address varchar(50) NOT NULL,
+	ContactNumber varchar(12) NOT NULL,
+	IsDeleted bool DEFAULT false,
+	CONSTRAINT HotelsPK PRIMARY KEY(ID),
+	CONSTRAINT Hotels_CountriesFK FOREIGN KEY (CountrieID) REFERENCES Countries (ID)
+);
+
+CREATE TABLE Users (
+	Id int DEFAULT nextval ('Users_seq'),
+	Login varchar(50) NOT NULL,
+	Password varchar(50) NOT NULL,
+	CONSTRAINT UserPK PRIMARY KEY(Id),
+	CONSTRAINT CHK_UsersLogin CHECK (length(Login)>5),
+	CONSTRAINT CHK_UsersPassword CHECK (length(Password)>5)
+);

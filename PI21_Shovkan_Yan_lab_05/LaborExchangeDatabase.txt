@@ -1,0 +1,29 @@
+CREATE TABLE firm ( 
+ firmID int NOT NULL PRIMARY KEY, 
+ firmName VARCHAR(100) NOT NULL,
+ firmAddress VARCHAR(100) NOT NULL,
+ isDeleted boolean NOT NULL DEFAULT FALSE
+);
+CREATE TABLE vacancy ( 
+ vacancyID int NOT NULL PRIMARY KEY, 
+ vacancyPosition VARCHAR(100) NOT NULL, 
+ vacancySalary VARCHAR(100) NOT NULL, 
+ vacancySchedule VARCHAR(100) NOT NULL,
+ isDeleted boolean NOT NULL DEFAULT FALSE,
+ firmID int NOT NULL, 
+ FOREIGN KEY (firmID) 
+ REFERENCES firm (firmID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE SEQUENCE firmID_seq START 1;
+CREATE SEQUENCE vacancyID_seq START 1;
+ALTER TABLE firm ALTER COLUMN firmID SET DEFAULT nextval('firmID_seq');
+ALTER TABLE vacancy ALTER COLUMN vacancyID SET DEFAULT nextval('vacancyID_seq');
+
+create table client(
+ clientID int NOT NULL PRIMARY KEY, 
+ clientLogin VARCHAR(100) NOT NULL,
+ clientPassword VARCHAR(100) NOT NULL
+);
+
+CREATE SEQUENCE clientID_seq START 1;
+ALTER TABLE client ALTER COLUMN clientID SET DEFAULT nextval('clientID_seq');

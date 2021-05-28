@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  pg:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=rest_user
+      - POSTGRES_PASSWORD=rest_pass
+      - POSTGRES_DB=rest_db
+    ports: 
+      - 5432:5432

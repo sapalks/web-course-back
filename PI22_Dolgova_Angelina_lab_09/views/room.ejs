@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    const roomName = "<%= roomName %>"
+    document.title = "Chat App | " + roomName
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="chat-container">
+  <h1 id="room-label">Room: </h1>
+    <button onclick="location.href = 'http://localhost:3000/'" id="exit-button">Exit</button>
+  <div id="message-container"></div>
+
+    <form id="send-container">
+      <input type="text" id="message-input" placeholder="Enter your message">
+      <button type="submit" id="send-button">Send</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

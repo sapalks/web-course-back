@@ -1,0 +1,40 @@
+body {
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
+	margin: 0 auto;
+	text-align: center;
+	align-items: center;
+}
+
+h1 {
+	font-size: 50px;
+	color: black;
+	margin-top: 50px;
+}
+
+h2 {
+	font-size: 30px;
+	color: black;
+	margin-top: 10px;
+}
+
+p {
+	font-size: 20px;
+	color: black;
+}
+
+.btn {
+	margin: 5px auto;
+	padding: 5px 20px;
+	overflow: hidden;
+	border-bottom-width: 4px;
+	font-family: 'Arial', sans-serif;
+	letter-spacing: 2px;
+	color: black;
+	background: white;
+}
+
+
+a{
+    text-decoration: none;
+}
