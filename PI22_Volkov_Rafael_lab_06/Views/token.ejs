@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Токены</title>
+</head>
+
+<body>
+    <div>
+        <div class="currentToken">
+            <h1>ТОКЕНЫ:</h1>
+        </div>
+
+        <div>
+            <h2> Access:
+                <%= access_token %>
+            </h2>
+        </div>
+
+        <div>
+            <h2> Refresh:
+                <%= refresh_token %>
+            </h2>
+        </div>
+
+        <div>
+            <h2> LifeTime:
+                <%= lifetime %>
+            </h2>
+        </div>
+
+        <div>
+            <h2> TokenType:
+                <%= type %>
+            </h2>
+        </div>
+
+        <div class="buttons">
+            <h2><a class="buttonAccess" href="/updateToken">Получить новые токены</a></h2>
+            <h2><a class="buttonRefresh" href="/logout">Выход</a></h2>
+        </div>
+    </div>
+</body>
+
+</html>
