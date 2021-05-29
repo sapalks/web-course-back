@@ -12,7 +12,7 @@
 Для выполнения задания лабораторной работы использовалалась облачная платформа **Heroku**.
 
 
-https://youtu.be/rBT6uE5wcFc видео с работой кода
+https://www.youtube.com/watch?v=4938ZzioEo8 видео с работой кода
 
 
-https://dashboard.heroku.com/apps/vast-ravine-88621 сервер
+https://vast-ravine-88621.herokuapp.com/ сервер
