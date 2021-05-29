@@ -35,10 +35,12 @@ class BoardController {
     }
 
     async updateBoard(req, res) {
-        const { id, name } = req.body
+        const id = req.query.id
+        const name = req.query.name
         const board = await db.query('UPDATE bulletinboards set boardname = $2 where id = $1 RETURNING *',
             [id, name])
         cache.delete('board')
+        cache.delete('board'+id)
         res.json(board.rows[0])
     }
 
@@ -47,6 +49,7 @@ class BoardController {
         await db.query('Update bulletinboards set isDeleted = true where id = $1', [id])
         res.json(`bulletin board with id: ${id} was deleted`)
         cache.delete('board')
+        cache.delete('board'+id)
     }
     async isCached(req, res) {
       const key = await cache.getLastKey()
