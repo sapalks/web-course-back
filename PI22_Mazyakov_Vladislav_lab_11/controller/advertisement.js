@@ -52,6 +52,7 @@ class AdvertisementController {
         const advert = await db.query('UPDATE advertisement set advertname = $1, price = $2 where id = $3 RETURNING *',
             [advertname, price, id])
             cache.delete('advert')
+            cache.delete('advert'+id)
             res.json(advert.rows[0]);
     }
 
@@ -60,6 +61,7 @@ class AdvertisementController {
         await db.query('Update advertisement set isDeleted = true where id = $1', [id])
         res.json(`advertisement with id: ${id}  was  deleted`)
         cache.delete('advert')
+        cache.delete('advert'+id)
     }
     async isCached(req, res) {
        const key = await cache.getLastKey()
