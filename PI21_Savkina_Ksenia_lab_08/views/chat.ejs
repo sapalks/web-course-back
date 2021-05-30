@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Chat</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/static/app.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="container" id="text_col">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="dataContainer">
+                        <div class="row justify-content-md-center">
+                            <label>Пользователь: <%= name %></label>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <label>Комната: <%= room %></label>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <label>В комнате:</label>
+                            <table id="inRoom"></table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-auto">
+                    <div class="row">
+                        <div class="formMessages" id="formMessages">
+                            <table id="viewMess">
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="text" id="message">
+                        <button type="submit" class="btn" id="btnMessage"
+                            onclick="send(document.getElementById ('message').value); document.getElementById ('message').value = ''">Отправить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <a class="btn" href="/">Выйти</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

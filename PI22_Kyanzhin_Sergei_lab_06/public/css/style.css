@@ -1,0 +1,32 @@
+y
+body{
+    background-color: #292929;
+}
+
+.indexPage{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    Color: #ffffff;
+    font-size: 20px;
+}
+
+h1{
+    Color: #ffffff;
+}
+
+h3{
+    color: #ffffff
+}
+
+li {
+    color: #f3ece7;
+}
+
+button{
+    color: #ffffff;
+    background-color:#595e5e;
+    border-radius:5%;
+}

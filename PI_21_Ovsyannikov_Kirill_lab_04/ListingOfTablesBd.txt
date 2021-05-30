@@ -1,0 +1,29 @@
+CREATE TABLE sushi_bar ( 
+ sushi_barID int NOT NULL PRIMARY KEY, 
+ sushi_barName VARCHAR(100) NOT NULL,
+ sushi_barAddress VARCHAR(100) NOT NULL,
+ isDeleted boolean NOT NULL DEFAULT FALSE
+);
+CREATE TABLE rolls ( 
+ rollsID int NOT NULL PRIMARY KEY, 
+ rollsName VARCHAR(100) NOT NULL, 
+ rollsPrice VARCHAR(100) NOT NULL, 
+ rollsWeight int NOT NULL,
+ isDeleted boolean NOT NULL DEFAULT FALSE,
+ sushi_barID int NOT NULL, 
+ FOREIGN KEY (sushi_barID) 
+ REFERENCES sushi_bar (sushi_barID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE SEQUENCE sushi_barID_seq START 1;
+CREATE SEQUENCE rollsID_seq START 1;
+ALTER TABLE sushi_bar ALTER COLUMN sushi_barID SET DEFAULT nextval('sushi_barID_seq');
+ALTER TABLE rolls ALTER COLUMN rollsID SET DEFAULT nextval('rollsID_seq');
+
+create table user_(
+ userID int NOT NULL PRIMARY KEY, 
+ userLogin VARCHAR(100) NOT NULL,
+ userPassword VARCHAR(100) NOT NULL
+);
+
+CREATE SEQUENCE userID_seq START 1;
+ALTER TABLE user_ ALTER COLUMN userID SET DEFAULT nextval('userID_seq');

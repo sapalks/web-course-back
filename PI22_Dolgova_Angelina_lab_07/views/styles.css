@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+:root {
+    --primary: rgba(23, 190, 187, 1);
+    --secondary: rgba(240, 166, 202, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+html, body {
+    background: linear-gradient(120deg, var(--primary), var(--secondary));
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container h1 {
+    color: #FFF;
+    font-size: 70px;
+    font-weight: 700;
+}
+
+.container .a-goto-files {
+    color: #FFF;
+    text-decoration: underline;
+    font-size: 55px;
+    font-weight: 400;
+    margin-top: 1.5em;
+}
+
+.container .a-goto-files:hover {
+    text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+.container .files-folders-container {
+    background: rgba(255, 255, 255, 0.05);
+    width: 900px;
+    height: 70%;
+    border-radius: 0.2em;
+    position: relative;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container .files-folders-container .folders-container {
+    text-align: left;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 1.2em 0 0.7em 3em;
+    text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+}
+
+.container .files-folders-container .files-container {
+    text-align: left;
+    color: #FFF;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0 0 1em 5em;
+}
+
+.container .files-folders-container .files-container .download-btn {
+    font-size: 15px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--secondary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+    width: 130px;
+}
+
+.container .files-folders-container .files-container .download-btn:hover {
+    background: var(--secondary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+.container .files-folders-container .goto-upload-container {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.container .files-folders-container .goto-upload-container .upload-btn {
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    width: 180px;
+    margin-top: 10%;
+}
+
+.container .files-folders-container .goto-upload-container .upload-btn:hover {
+    background: var(--primary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+.container h2 {
+    color: #FFF;
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.choose-files-container h2 {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.container .choose-files-container {
+    background: rgba(255, 255, 255, 0.05);
+    width: 900px;
+    height: 70%;
+    border-radius: 0.2em;
+    position: relative;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.choose-files-container .input-container {
+    height: 60%;
+    width: 100%;
+    text-align: center;
+}
+
+.choose-files-container .submit-container {
+    height: 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.choose-files-container input {
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--primary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    width: 400px;
+    margin-top: 10%;
+}
+
+.choose-files-container input:hover {
+    background: var(--primary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
+
+.choose-files-container button {
+    font-size: 18px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--secondary);
+    padding: 0.3rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    width: 180px;
+    margin-top: 10%;
+}
+
+.choose-files-container button:hover {
+    background: var(--secondary);
+    color: rgba(255, 255, 255, 1);
+    transition: all .3s linear;
+}
