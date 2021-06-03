@@ -16,3 +16,4 @@
 ## Видео
 
 ## https://disk.yandex.ru/i/OpnwDoIBT77SDQ
+## Ссылка на деплой: https://immense-bayou-31247.herokuapp.com
