@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Содержимое</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="files">
+            <div class="col">
+                <% folders.forEach(function(item) { %>
+                    <div class="row__folder">
+                        <img src="../static/folder.png" alt="папка" class="img__folder">
+                        <div class="item__name">
+                            <%= item.name %>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+            <div class="col">
+                <% files.forEach(function(item) { %>
+                    <div class="row__file">
+                        <div class="col"><a class="material-icons" id="cloud"
+                            href="/download?shared_link=<%= item.path_display %>">cloud_download</a></div>
+                        <div class="file__wrap">
+                            
+                            <img src="../static/file.png" alt="файл" class="img__file">
+                            <div class="item__name__file">
+                                <%= item.name %>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+        <div class="btns__container">
+            <div class="btn"><a class="btnLink" href="/">На главную</a></div>
+            <div class="btn"><a class="btnLink" href="/uploadFile">Загрузить файл</a></div>
+        </div>
+    </div>
+</body>
+
+</html>
