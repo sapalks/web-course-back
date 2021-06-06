@@ -1,0 +1,25 @@
+{
+  "name": "pi21_shovkan_yan_lab_12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "chai": "^4.3.4",
+    "express": "^4.17.1",
+    "jsonpath": "^1.1.1",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.4.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
