@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Загрузка файла</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+</head>
+
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="col">
+                <div>Введите название файла</div>
+                <div><input id="filename" class="input__text" type="text"></div>
+            </div>
+            <div class="col">
+                    <input type="button" class="btn btnLink btnBC" value="Загрузить файл"
+                        onclick="window.location.href = '/upload?filename=' + document.getElementById ('filename').value">
+                        <div class="btn">
+                            <a class="btnLink" href="/content">Назад</a>
+                        </div>
+            </div>
+            
+        </div>
+        </form>
+</body>
+
+</html>
