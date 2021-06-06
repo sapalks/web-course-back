@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="align-self-center">
+        <div class="p-2 flex-fill bd-highlight">
+          <form action="/auth/yandex" method="GET">
+            <button type="submit" class="btn btn-highlight">Auth</button>
+          </form>
+        </div>
+        <form action="/info" method="POST">
+          <div class="p-2 flex-fill bd-highlight">
+            <input name="access_token" required class="form-control" />
+          </div>
+          <div class="p-2 flex-fill bd-highlight">
+            <button type="submit" class="btn btn-highlight">Info</button>
+          </div>
+        </form>
+        <form action="/auth/refreshToken" method="post">
+          <div class="p-2 flex-fill bd-highlight">
+            <input name="refresh_token" required class="form-control" />
+          </div>
+          <div class="p-2 flex-fill bd-highlight">
+            <button type="submit" class="btn btn-highlight">Refresh</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
