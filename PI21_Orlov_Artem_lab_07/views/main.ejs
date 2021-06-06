@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Main</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+</head>
+
+<body>
+<h1>Home</h1>
+<div>
+    <% if(token){ %>
+        <span style="color: green">authorized</span>
+    <% } else { %>
+        <span style="color: red">not authorized</span>
+    <% } %>
+    <h3>Actions</h3>
+    <form action="/" method="post" style="margin-top: 6px">
+        <button type="submit" style="width: 80px;">Login</button>
+    </form>
+    <form action="/dropboxinfo" method="post" style="margin-top: 6px">
+        <button type="submit" style="width: 80px;">Info</button>
+    </form>
+    <form action="/download" method="get" style="margin-top: 6px">
+        <button type="submit" style="width: 80px;">Download</button>
+    </form>
+    <form action="/upload" method="get" style="margin-top: 6px">
+        <button type="submit" style="width: 80px;">Upload</button>
+    </form>
+</div>
+</body>
+</html> 
