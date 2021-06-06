@@ -7,7 +7,7 @@ create TABLE task(
 
 create TABLE step(
     id SERIAL PRIMARY KEY,
-    theme VARCHAR(255)
+    theme VARCHAR(255),
     task_id INTEGER,
     FOREIGN KEY (task_id) REFERENCES task (id)
 );
