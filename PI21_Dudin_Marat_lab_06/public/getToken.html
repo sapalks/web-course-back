@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/styles.css"/>
+    </head>
+    <body>
+        <title>Token info</title>
+        <table>
+            <tr class="info">
+                <td><label class="col-sm col-form-label">access_token:</label></td>
+                <td><label class="col-sm col-form-label"><%= access_token %></label></td>
+            </tr>
+            <tr class="info">
+                <td><label class="col-sm col-form-label">expires_in:</label></td>
+                <td><label class="col-sm col-form-label"><%= expires_in %></label></td>
+            </tr>
+            <tr class="info">
+                <td><label class="col-sm col-form-label">refresh_token:</label></td>
+                <td><label class="col-sm col-form-label"><%= refresh_token %></label></td>
+            </tr>
+            <tr class="info">
+                <td><label class="col-sm col-form-label">token_type:</label></td>
+                <td><label class="col-sm col-form-label"><%= token_type %></label></td>
+            </tr>
+        </table>
+    </body>
+</html>
