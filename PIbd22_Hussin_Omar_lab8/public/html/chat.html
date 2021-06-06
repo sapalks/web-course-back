@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+            integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+            crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        button {
+                  background-color: #1dc455d8;
+                  color: rgb(192, 27, 60);
+                  padding: 5px 8px;
+                  margin: 4px 0;
+                  border: none;
+                  cursor: pointer;
+                  width: 50%;
+                }
+           </style>
+</head>
+
+<body onload="SubscribePane('<%= response %>')">
+    <div id="mypopup" class="popup">
+        <div class="popup-content">
+
+ <p class="span-header"><i class="fas fa-info-circle"></i> Users:
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </p>
+<div id="user"></div>
+        </div>
+    </div>
+    <div class="chat-container">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+
+<a class="navbar-brand" id="users-online" href="#">
+                        <div class="online">
+                            <i class="fas fa-users"></i> Online
+                        </div>
+                    </a>
+ <a class="navbar-brand">
+                        <div class="room-id">
+                            <span><i class="fas fa-cog"></i> Room ID : </span>
+                            <span id="room-name"></span>
+                        </div>
+                    </a>
+                    
+                    <a class="navbar-brand">
+                        <div class="user-name">
+                            <span><i class="fas fa-user"></i> User : </span>
+                            <span id="user-name"></span>
+                        </div>
+                    </a>
+                    <a class="navbar-brand">
+                        <form action="/main">
+                            <button id="leave" type="submit" class="btn btn-outline-light"><i class="fas fa-leaf"></i> Leave room</button>
+                        </form>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="messages-container">
+            <div class="messages"></div>
+        </div>
+        <div class="chat-form-container">
+            <form id="message-sending-form" onclick="PublishForm()">
+                <input id="msg" type="text" name="message" required autocomplete="off" class="form-control"/>
+                <button id="send" type="submit" class="btn btn-outline-light"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+
+
+<script src="../js/chat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js" integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg==" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

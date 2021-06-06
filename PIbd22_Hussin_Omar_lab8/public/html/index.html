@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>main</title>
+        <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+            integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+            crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/styles.css"/>
+        <style>
+            button {
+                      background-color: #1bce0ad8;
+                      color: rgb(68, 18, 206);
+                      padding: 14px 20px;
+                      margin: 8px 0;
+                      border: none;
+                      cursor: pointer;
+                      width: 100%;
+                    }
+               </style>
+    </head>
+    <body>
+        <div class="join-container">
+           
+            <div class="join-main">
+                <form action="join" method="GET">
+                    <div class="imgcontainer">
+                        <img src="f1.png" alt="Avatar" class="avatar">
+                      </div>
+                      
+                      <div class="container">
+                        <label for="uname"><b>username</b></label>
+                        <input type="text" name="username"  placeholder="Enter username..."  required unique/>
+                       </div>>
+                       <div class="container">
+                        <label for="psw"><b>Password</b></label>
+                        <input
+                        type="text"
+                        name="roomId"
+                        id="room"
+                        placeholder="Enter room name"
+                        required />
+                </div> 
+                <div>  
+                        <button type="submit">Login</button>
+                        <label>
+                          <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                      </div>
+                      <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password?</a></span>
+                      </div>
+  
+                </form>
+            </div>
+        </div>
+   
+    </body>   
+</html>

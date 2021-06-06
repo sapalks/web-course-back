@@ -1,0 +1,208 @@
+
+
+
+ body {font-family: Arial, Helvetica, sans-serif;}
+        form {border: 3px solid #f1f1f1;}
+        
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+        }
+        
+        .imgcontainer {
+          text-align: center;
+          margin: 24px 0 12px 0;
+        }
+        
+        img.avatar {
+          width: 30%;
+          border-radius: 70%;
+        }
+
+
+		body {
+			background: rgb(145, 122, 167) !important;
+		}
+		
+		.join-container {
+			width: 550px;
+			margin: 250px auto;
+		}
+		
+		.join-container H1 {
+			text-align: center;
+			padding: 15px;
+			color: white;
+			background-color: #1b2024;
+			border-radius: 15px;
+		}
+		
+		.join-main {
+			padding: 30px 40px;
+			background-color: #81245d;
+			border-radius: 15px;
+		}
+		
+		.join-main label {
+			color: white;
+		}
+		
+		.join-main input {
+			margin-bottom: 20px;
+		}
+		
+		.button-join {
+			text-align: center;
+		}
+		
+		
+
+
+
+		.button-join button {
+			margin-top: 10px;
+			width: 12px;
+		}
+		
+		.time {
+			color: black;
+		}
+		
+		#send, #leave {
+			font-size: 18px;
+		}
+		
+		.chat-container {
+			max-width: 1450px;
+			background: #6b9fff;
+			margin: 70px auto;
+			border-radius: 15px;
+		}
+		
+		.chat-container .header nav {
+			background: #e5e6e9;
+			color: white;
+			padding: 20px;
+			display: flex;
+			justify-content: space-between;
+			border-radius: 15px 15px 0 0;
+		}
+		
+		.logo, .online {
+			width: 220px;
+			font-size: 28px;
+		}
+		
+		.room-id {
+			width: 300px;
+			font-size: 28px;
+		}
+		
+		.user-name {
+			width: 345px;
+			font-size: 28px;
+		}
+		
+		.messages-container {
+			overflow: hidden;
+			background-color:rgb(153, 94, 94);
+		}
+		
+		.messages {
+			overflow: auto;
+			padding: 20px 20px 0;
+			height: 600px;
+			overflow-y: scroll;
+			margin-right: -15px;
+		}
+		
+		.messages div {
+			padding: 4px;
+			margin-bottom: 3px;
+			background-color: rgb(104, 65, 65);
+			border-radius: 3px;
+			width: 20%;
+		}
+		
+		.message {
+			float: left;
+		}
+		
+		.my-message {
+			float: right;
+		}
+		
+		.meta {
+			font-size: 20px;
+			color: #e1e4eb;
+		}
+		
+		.text {
+			font-size: 18px;
+		}
+		
+		.chat-form-container {
+			padding: 30px;
+			background-color: #1b2024;
+			border-radius: 0 0 15px 15px;
+			height: 100px;
+		}
+		
+		.btn-outline-light {
+			font-size: 18px;
+		}
+		
+		.chat-form-container #message-sending-form {
+			display: flex;
+		}
+		
+		.chat-form-container input {
+			height: 40px;
+			flex: 1;
+		}
+		
+		.chat-form-container button {
+			margin-left: 35px;
+		}
+		
+		.span-header {
+			text-align: center;
+			font-size: 34px;
+			font-weight: bold;
+		}
+		
+		.popup {
+			display: none;
+			position: fixed;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			margin: -70px auto;
+			overflow: auto;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+		
+		.close {
+			float: right;
+		}
+		
+		.popup-content {
+			display: block;
+			background-color: rgb(177, 31, 31);
+			width: 30%;
+			margin-top: 70px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 15px;
+			border-radius: 15px;
+		}
+		
+		.user {
+			font-size: 20px;
+			margin-top: 15px;
+		}
+		
