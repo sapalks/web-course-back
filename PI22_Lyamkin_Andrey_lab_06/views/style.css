@@ -1,0 +1,35 @@
+body{
+    font-family: 'Comic Sans MS';
+    font-size: 20px;
+    margin: 0px;
+    background-color: #e0e0e0;
+
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    min-width: 960px;
+    margin: 0 auto;
+}
+
+.button{
+    padding: 7px;
+    color: #1b399b;
+    text-decoration: none;
+    transition: color .15s linear;
+    display: inline-block;
+    vertical-align: top;  
+    
+}
+.button:hover{ 
+    color: black;
+}
+
+.info{
+    border-bottom: 5px solid black;
+}
+.info_header{
+    text-align: center;
+    font-size: 24px;
+}
+
