@@ -1,8 +1,6 @@
 const Message = require("./message");
 const formatDate = require("./utils");
 
-module.exports = Chat;
-
 class Chat {
   chatName;
   subscribers;
@@ -13,28 +11,27 @@ class Chat {
     this.chatName = chatName;
     this.admin = userName;
     this.subscribers = [];
-    this.date = new Date();
-    this.messages = [
-      new Message(
-        "",
-        `This channel was created by ${admin} at ${formatDate(date)}`
-      ),
-    ];
+    this.dateCreation = new Date();
+    this.messages = [];
   }
-  addSubscriber(userName) {
-    this.subscribers.push({ userName });
+  subscribe(userName, res) {
+    this.subscribers.push({ userName, res });
   }
-  deleteSubscriber(userName) {
-    let user = this.findSubscribers(userName);
+  unsubscribe(userName) {
+    let user = this.subscribers.find((x) => x.userName === userName);
+    if (!user) {
+      return;
+    }
     this.subscribers.splice(this.subscribers.indexOf(user), 1);
   }
-  findSubscribers(userName) {
-    return this.subscribers.length > 0
-      ? this.subscribers.find((x) => x.userName === userName)
-      : undefined;
+  addMessage(userName, text) {
+    this.messages.push(new Message(userName, text));
   }
   getChatName() {
     return this.chatName;
+  }
+  getAdmin() {
+    return this.admin;
   }
   getSubscribers() {
     return this.subscribers;
@@ -43,3 +40,5 @@ class Chat {
     return this.messages;
   }
 }
+
+module.exports = Chat;

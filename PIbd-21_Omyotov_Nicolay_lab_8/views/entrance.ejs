@@ -15,7 +15,7 @@
       const userName = document.getElementById("userName").value;
       console.log("userName: ", userName);
       if (!userName) {
-        alert("Введите имя");
+        alert("Enter your name");
         return;
       }
 
@@ -28,7 +28,14 @@
           if (response.status == 409) {
             alert("Such user already exists");
           } else {
-            alert("Ошибка HTTP: " + response.status + "\n" + response.body);
+            alert(
+              "Ошибка HTTP: " +
+                response.status +
+                "\n" +
+                response.statusText +
+                "\n" +
+                response.body
+            );
           }
         } else {
           window.location.replace(
@@ -45,7 +52,7 @@
       <h1>Welcome!</h1>
       <div class="card" style="width: 18rem">
         <div class="card-body">
-          <h5 class="card-title">Input your name</h5>
+          <h5 class="card-title">Enter your name</h5>
           <input class="input_text" type="text" id="userName" />
           <button class="btn btn-primary" onclick="tryEnter()">Go</button>
         </div>

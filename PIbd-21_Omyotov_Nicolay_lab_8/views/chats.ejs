@@ -14,21 +14,24 @@
     <div class="container">
       <h1>Hi, <%= userName %>!</h1>
       <% chats.forEach(function(chat) { %>
-      <div class="d-flex justify-content-between">
-        <div><%= chat.getChatName() %></div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          onclick="window.location.href = '/chat?name=<%= chat.getChatName() %>&userName=<%= userName %>'"
-        >
-          Go
-        </button>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h4 class="card-title"><%= chat.getChatName() %></h4>
+          <h6 class="card-text"><%= chat.getAdmin() %></h6>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            onclick="window.location.href = '/chat?chatName=<%= chat.getChatName() %>&userName=<%= userName %>&adminName=<%= chat.getAdmin() %>'"
+          >
+            Go
+          </button>
+        </div>
       </div>
       <% }); %>
       <button
         class="btn btn-primary"
         type="submit"
-        onclick="location.href = '/chat/add?userName=<%= userName %>'"
+        onclick="location.href = '/chats/add?userName=<%= userName %>'"
       >
         Add new chat
       </button>
