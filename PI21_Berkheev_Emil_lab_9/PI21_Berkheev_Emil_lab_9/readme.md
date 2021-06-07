@@ -12,4 +12,4 @@
 ## Запуск проекта  
 - Сервер запускаем с помощью node index.js
 
-Ссылка на видео: https://youtu.be/wD482q768Gc
+Ссылка на видео: https://youtu.be/Lb9Z33UauyI
