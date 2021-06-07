@@ -18,3 +18,4 @@
 - Отправка сообщений и возможность переподключения к другой комнате
 
 Ссылка на видео: https://drive.google.com/file/d/1wVdlh0Y1A31FMY1svsNfENhltQjXyxdN/view?usp=sharing
+Доп.задание: https://drive.google.com/file/d/1i0aLqJyMO4WJxe3Wms4qWE7D2s-EOimb/view?usp=sharing

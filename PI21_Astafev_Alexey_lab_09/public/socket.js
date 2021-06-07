@@ -13,7 +13,6 @@ const params = (new URL(document.location)).searchParams
 const username = params.get('username')
 const room = params.get('room')
 
-
 usr.innerHTML = username
 roomName.innerText = room
 

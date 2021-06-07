@@ -1,7 +1,6 @@
 const users = []
 
 class User {
-
     createUser(id, username, room) {
         const user = { id, username, room }
         users.push(user)

@@ -25,14 +25,11 @@ io.on('connection', function(socket) {
             return
         }
 
-        //const user = createUser(socket.id, username, room)
         const user = userModel.createUser(socket.id, username, room)
 
-        // subscribe the socket to a given channel
         socket.join(user.room)
         socket.emit('first-connection')
 
-        // sending events to all the connected clients other than the sender
         socket.broadcast.to(user.room).emit('message', formatMessage(chatBot, `${user.username} connected to the chat`))
 
         updatingListUsers(user.room)
