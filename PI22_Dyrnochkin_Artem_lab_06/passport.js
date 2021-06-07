@@ -1,11 +1,11 @@
-const YandexStrategy = require('passport-yandex').Strategy
-const YANDEX_CLIENT_ID = 'b82a6c21fd9d42cf956a268c6b8db2ca'
-const YANDEX_CLIENT_SECRET = '8e3f8fd3839f42c697b80c92af382c99'
+const GithubStrategy = require('passport-github').Strategy
+const Github_CLIENT_ID = 'e5950a9f181c9cc69f52'
+const Github_CLIENT_SECRET = 'c789722c472679929a4b46c1795f3378a500d811'
 
-var strategy = new YandexStrategy({
-        clientID: YANDEX_CLIENT_ID,
-        clientSecret: YANDEX_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/yandex/callback'
+var strategy = new GithubStrategy({
+        clientID: Github_CLIENT_ID,
+        clientSecret: Github_CLIENT_SECRET,
+        callbackURL: 'http://localhost:3000/github/callback'
     },
 
     function (accessToken, refreshToken, profile, done) {
