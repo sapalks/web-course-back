@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body class="main">
+        <table align="left">
+            <div>
+                <form action="/FileIerarchy" method="post">
+                    <table align="left">
+                        <div><div>Access_token:</div><div><input name="access_token" value='' required class="form-control" autocomplete="off"></div></div>
+                    </table>
+                    <div align="left">
+                        <button type="submit">отображение списка доступных файлов</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form action="/download" method="post">
+                    <table align="left">
+                        <div><div>Access_token:</div><div><input name="access_token" value='' class="form-control" autocomplete="off"></div></div>
+                        <div><div>Shared_link:</div><div><input name="shared_link" value='' class="form-control" autocomplete="off"></div></div>
+                    </table>
+                    <div align="left">
+                        <button type="submit">скачивание файлов</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form action="/upload" method="post">
+                    <table align="left">
+                        <div><div>Access_token:</div><div><input name="access_token" value='' class="form-control" autocomplete="off"></div></div>
+                        <div><div>filename:</div><div><input name="filename" value='' class="form-control" autocomplete="off"></div></div>
+                    </table>
+                    <div align="left">
+                        <button type="submit">загрузка файлов в облако</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <form action="/main" method="post">
+                    <div>
+                        <button type="submit">Авторизация</button>
+                    </div>
+                </form>
+            </div>
+        </table>
+    </body>
+</html>
