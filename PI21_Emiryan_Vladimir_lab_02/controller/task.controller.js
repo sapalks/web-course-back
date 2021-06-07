@@ -12,10 +12,12 @@ class TaskController {
         res.json(tasks.rows)
     }
     async getTask(req, res) {
-
+        const id = req.params.id
+        const task = await db.query(`SELECT * FROM task where id = $1`, [id])
+        res.json(task.rows[0])
     }
     async updateTask(req, res) {
-
+        
     }    
     async deleteTask(req, res) {
 
