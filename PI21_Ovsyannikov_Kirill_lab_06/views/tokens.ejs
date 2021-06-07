@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="TokensStyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <span class="dataRowHead">Текущие токены:<br></span>
+    <span class="dataRow">Access token:
+            <%= access_token %>
+        </span><br>
+    <span class="dataRow">Refresh token:
+            <%= refresh_token %>
+        </span><br>
+    <span class="dataRow">Lifetime: 
+            <%= lifetime %>
+        </span><br>
+    <div class="sampleButton">
+        <a class="button" href="/updateTokens"><span>Обновить</span></a>
+    </div>
+    <div class="sampleButton">
+        <a class="button" href="/signOut"><span>Выйти</span></a>
+    </div>
+</body>
+
+</html>
