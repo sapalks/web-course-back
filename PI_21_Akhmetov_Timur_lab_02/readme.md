@@ -39,3 +39,5 @@ CREATE TABLE student (
 - `POST /student` - создает запись в таблице студентов  
 - `PUT /student` - редактирует запись в таблице студентов  
 - `DELETE /student?id={id}` - помечает запись со студентом удаленной  
+
+ВИДЕО: https://drive.google.com/file/d/1BYIes6jHCvsRx4XG_YR_Je5R0nDEaZo-/view?usp=sharing
