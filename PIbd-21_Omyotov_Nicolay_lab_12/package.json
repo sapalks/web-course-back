@@ -1,0 +1,14 @@
+{
+  "name": "lab_12",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "mocha index.test.js"
+  },
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "fs": "0.0.1-security",
+    "jsonpath": "^1.1.1",
+    "mocha": "^8.4.0",
+    "superagent": "^6.1.0"
+  }
+}
