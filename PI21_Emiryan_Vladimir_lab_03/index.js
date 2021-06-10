@@ -10,4 +10,8 @@ app.use(express.json())
 app.use('/api', taskRouter)
 app.use('/api', stepRouter)
 
+app.get('/ping', (req, res) => {
+    res.json({ status: 'ok', time: new Date().toUTCString() });
+});
+
 app.listen(PORT, () => console.log(`server started on post ${PORT}`))

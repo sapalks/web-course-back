@@ -20,7 +20,8 @@
   "homepage": "https://github.com/2oublePeace/web-course-back#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^8.6.0"
+    "pg": "^8.6.0",
+    "sync-request": "^6.1.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.2.1",

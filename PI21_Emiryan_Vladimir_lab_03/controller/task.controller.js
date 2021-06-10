@@ -5,7 +5,9 @@ class TaskController {
         const {theme, timeOfRemind, deadline} = req.body
         console.log(`${theme} ${timeOfRemind} ${deadline}`)
         const newTask = await db.query(`INSERT INTO task (theme, timeOfRemind, deadline) values ($1, $2, $3) RETURNING *`, [theme, timeOfRemind, deadline])
-        res.json(newTask.rows[0])
+        const web = res.json(newTask.rows[0])
+        res.json(web['body'])
+        //console.log(web)
     }
     async getTasks(req, res) {
         const tasks = await db.query(`SELECT * FROM task`)
@@ -23,7 +25,7 @@ class TaskController {
     }    
     async deleteTask(req, res) {
         const id = req.params.id
-        const task = await db.query(`DELETE FROM task where id = $1`, [id])
+        const task = await db.query(`DELETE FROM task cascade where id = $1`, [id])
         res.json(task.rows[0])
     }
 }
