@@ -1,0 +1,25 @@
+{
+  "name": "pi21_demyanchuk_alesya_lab_06",
+  "version": "1.0.0",
+  "description": "* Создаю в VS проект и устанавливаю соответсвующие модули для удобства работы",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aleca",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "html": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-yandex": "0.0.5",
+    "pg": "^8.6.0",
+    "request": "^2.88.2",
+    "url": "^0.11.0"
+  }
+}
