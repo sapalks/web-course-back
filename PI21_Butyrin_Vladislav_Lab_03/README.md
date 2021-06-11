@@ -17,4 +17,4 @@
 
 
 Демонстрация работы:
-https://www.youtube.com/watch?v=lzkZPXnpxb0
+https://youtu.be/U3VK4122Ing

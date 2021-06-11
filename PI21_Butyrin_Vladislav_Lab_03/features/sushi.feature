@@ -12,10 +12,10 @@ Feature: Test CRUD Sushi
     """
 
         Examples:
-        | Name_Sushi             | Ingredients       | Cook_id    | result                                                          |
-        | Филадельфия            | Рис, рыба         | 2          | { "name_Sushi": "Филадельфия", "Ingredients": "Рис, рыба", "Cook_id": 2 }    |
-        | Классика с огурцом     | Рис, огурец       | 2          | { "name_Sushi": "Классика с огурцом", "Ingredients": "Рис, огурец", "Cook_id": 2 }     |
-        | Классика с креветкой   | Рис, креветка     | 3          | { "name_Sushi": "Классика с креветкой", "Ingredients": "Рис, креветка", "Cook_id": 3 } |
+        | Name_Sushi             | Ingredients       | Cook_id    | result                                                                                 |
+        | Филадельфия            | Рис, рыба         | 2          | { "name_sushi": "Филадельфия", "ingredients": "Рис, рыба", "cook_id": 2 }              |
+        | Классика с огурцом     | Рис, огурец       | 2          | { "name_sushi": "Классика с огурцом", "ingredients": "Рис, огурец", "cook_id": 2 }     |
+        | Классика с креветкой   | Рис, креветка     | 3          | { "name_sushi": "Классика с креветкой", "ingredients": "Рис, креветка", "cook_id": 3 } |
 
     Scenario: Get Sushies
         Given the user added Cook with surname "Tanaka" and age 21
@@ -30,19 +30,19 @@ Feature: Test CRUD Sushi
         """
         [
             { 
-                "name_Sushi": "Филадельфия",
-                "Ingredients": "Рис, рыба", 
-                "Cook_id": 2 
+                "name_sushi": "Филадельфия",
+                "ingredients": "Рис, рыба", 
+                "cook_id": 2
             },
             { 
-                "name_Sushi": "Классика с огурцом",
-                "Ingredients": "Рис, огурец", 
-                "Cook_id": 2  
+                "name_sushi": "Классика с огурцом",
+                "ingredients": "Рис, огурец", 
+                "cook_id": 2  
             },
             { 
-                "name_Sushi": "Классика с креветкой",
-                "Ingredients": "Рис, креветка", 
-                "Cook_id": 3 
+                "name_sushi": "Классика с креветкой",
+                "ingredients": "Рис, креветка", 
+                "cook_id": 3 
             }
         ]
         """
@@ -59,9 +59,9 @@ Feature: Test CRUD Sushi
         And server must reply with the following json in body:
         """
             { 
-                "name_Sushi": "Классика с креветкой",
-                "Ingredients": "Рис, креветка", 
-                "Cook_id": 3 
+                "name_sushi": "Классика с креветкой",
+                "ingredients": "Рис, креветка", 
+                "cook_id": 3 
             }
         """
 
@@ -77,9 +77,9 @@ Feature: Test CRUD Sushi
         And server must reply with the following json in body:
         """
             { 
-                "name_Sushi": "Классика с лососем",
-                "Ingredients": "Рис, лосось", 
-                "Cook_id": 3 
+                "name_sushi": "Классика с лососем",
+                "ingredients": "Рис, лосось", 
+                "cook_id": 3 
             }
         """
         When the user wants to get Sushies
@@ -88,19 +88,19 @@ Feature: Test CRUD Sushi
          """
         [
             { 
-                "name_Sushi": "Филадельфия",
-                "Ingredients": "Рис, рыба", 
-                "Cook_id": 2
+                "name_sushi": "Филадельфия",
+                "ingredients": "Рис, рыба", 
+                "cook_id": 2
             },
             { 
-                "name_Sushi": "Классика с креветкой",
-                "Ingredients": "Рис, креветка", 
-                "Cook_id": 3 
+                "name_sushi": "Классика с креветкой",
+                "ingredients": "Рис, креветка", 
+                "cook_id": 3 
             },
             { 
-                "name_Sushi": "Классика с лососем",
-                "Ingredients": "Рис, лосось", 
-                "Cook_id": 3 
+                "name_sushi": "Классика с лососем",
+                "ingredients": "Рис, лосось", 
+                "cook_id": 3 
             }
         ]
         """
@@ -118,14 +118,14 @@ Feature: Test CRUD Sushi
         """
         [
             { 
-                "name_Sushi": "Филадельфия",
-                "Ingredients": "Рис, рыба", 
-                "Cook_id": 2 
+                "name_sushi": "Филадельфия",
+                "ingredients": "Рис, рыба", 
+                "cook_id": 2 
             },
             { 
-                "name_Sushi": "Классика с огурцом",
-                "Ingredients": "Рис, огурец", 
-                "Cook_id": 2 
+                "name_sushi": "Классика с огурцом",
+                "ingredients": "Рис, огурец", 
+                "cook_id": 2 
             }
         ]
         """

@@ -9,7 +9,7 @@ class SushiController{
         res.json(newSushi.rows[0])
     }
 
-    async getAllSushis(req,res) {
+    async getAllSushies(req,res) {
 
         const Sushis = await db.query('SELECT Name_Sushi, Ingredients, Cook_id From Sushi')
         res.json(Sushis.rows)

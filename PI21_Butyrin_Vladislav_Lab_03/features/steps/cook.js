@@ -16,6 +16,7 @@ const {
 } = require("./utils");
 
 Before(async function () {
+    await this.sushi().clear()
     await this.cook().clear()
     isClear = true;
 });

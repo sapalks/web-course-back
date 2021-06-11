@@ -15,7 +15,7 @@ class SushiWorld extends BaseWorld {
         this.get(`/Sushi/${id}`);
     }
 
-    getSushis() {
+    getSushies() {
         this.get(`/Sushies`);
     }
 
