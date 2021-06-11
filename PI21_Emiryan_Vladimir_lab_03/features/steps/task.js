@@ -1,14 +1,22 @@
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
-const assert = require("assert").strict;
+const {expect} = require('chai')
+const { deepFilterProperties, matchObjects, isObject, getDatabaseName, isNotEmptyTaskTable} = require('./utils');
 
-const { deepFilterProperties, matchObjects, isObject, stringDataFormat } = require('./utils');
-
-Before(async function () {
+Before({tags: '@start and not @example'}, async function () {
     await this.task().clear();
 });
 
-When('a client create task with theme {string}, Time of remind {string}, Deadline {string}', function (theme, timeOfRemind, deadline) {
-    this.task().createTask(theme, timeOfRemind, deadline);
+//Scenario Outline: Create tasks
+Given('a client have database with name {string}', async function (expectDatabaseName) {
+    const databaseName = await getDatabaseName();
+
+    if (!matchObjects(expectDatabaseName, databaseName)) {
+        expect(databaseName).to.eql(expectDatabaseName);
+    }
+});
+
+When('a client create task with theme {string}, Time of remind {string}, Deadline {string}', function (theme, timeofremind, deadline) {
+    this.task().createTask(theme, timeofremind, deadline);
 });
 
 Then('server must reply with {int} status code', function (statusCode) {
@@ -17,36 +25,45 @@ Then('server must reply with {int} status code', function (statusCode) {
     }
 });
 
-Then('server must reply with the following json in body:', function (jsonStr) {
-    const expected = JSON.parse(jsonStr);
-
-    //
-    // in some responses we have auto generated ids,
-    // that should be ignored in the scenarios, as well as
-    // the empty body that carries only the id property
-    // like:
-    //      { status: 'ok', body: { id: 'xxx' } } => { status: 'ok', body: {} }
-    //
-    const filtered = deepFilterProperties(this.response.json, ['id']);
-    if (isObject(filtered.body) && Object.keys(filtered.body).length === 0) {
-        delete filtered.body;
-    }
-
-    expect(filtered).to.eql(expected);
-});
-
 Then('server must reply with a json in body like:', function (jsonStr) {
     const pattern = JSON.parse(jsonStr);
     const obj = deepFilterProperties(this.response.json, ['id'])
     
     if (!matchObjects(pattern, obj)) {
-        //
-        // just to prettify the error output
-        //
         expect(obj).to.eql(pattern);
     }
 });
 
-// After(async function () {
-//     await this.task().clear();
-// });
+//Scenario: Get tasks
+Given('a client have some tasks in database "tasktracker"', async function () {
+    const notEmpty = await isNotEmptyTaskTable();
+    const expect = true;
+
+    if (!matchObjects(expect, notEmpty)) {
+        expect(notEmpty).to.eql(expect);
+    }
+});
+
+When('a client receives a list of tasks', function () {
+    this.task().getTasks();
+});
+
+Then('server must reply with the following json:', function (jsonStr) {
+    const expected = JSON.parse(jsonStr);
+    const filtered = deepFilterProperties(this.response.json, ['id']);
+    if (isObject(filtered.body) && Object.keys(filtered.body).length === 0) {
+        delete filtered.body;
+    }
+    expect(filtered).to.eql(expected);
+});
+
+//Get task by index
+When('a client receives task by index {int}', function (index) {
+    this.task().getTask(index);
+});
+
+//
+
+After({tags: '@end'}, async function () {
+    await this.task().clear();
+});
