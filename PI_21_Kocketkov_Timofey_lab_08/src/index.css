@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500&display=swap');
+
+* {
+  font-family: 'Baloo Tammudu 2', cursive;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  margin: 5% 7% 5% 7%;
+  font-size: 24px;
+}
+h3 {
+  margin: 7%;
+}
+li {
+  list-style-type: none
+}
+input button {
+  outline: none;
+  cursor: none;
+}
+textarea {
+  resize: none;
+	outline: none;
+  display: inline-block;
+  text-indent: 10px;
+  width: 90%;
+  border-radius: 4px;
+  margin: 5% 5% 0 5%;
+  column-gap: normal;
+  border: 2px solid rgba(10,100,10, 60%);
+}
+form {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.main {
+display: flex;
+justify-content: center;
+  margin-top: auto;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input__text {
+  margin: 10px;
+  padding: 10px;
+  border: solid 2px rgb(10,10,10);
+  border-radius: 4px; 
+  appearance: none;
+  text-indent: 10px;
+}
+.input__text_first {
+  margin-top: 30vh;
+}
+.btn__enter {
+  margin: center;
+  display: block;
+  background-color: rgba(31, 160, 70, 90%);
+  margin: 10px;
+  border-radius: 4px;
+  border: 2px solid rgba(10,10,10, 60%);
+  padding: 10px 15px 0px 15px;
+}
+
+/* chat section */
+
+.chat__wrap {
+  margin: 10vh 30px 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  min-width: 60%;
+  min-height: 60%;
+  border-radius: 4px;
+  
+}
+.chat__users {
+  min-width: 30%;
+  margin: 15px;
+  border-radius: 4px;
+  background-color: rgba(195, 195, 195, 50%);
+  border: 2px solid rgba(10,100,10, 60%);
+}
+.chat__messages_wrap {
+  min-width: 50%;
+  margin: 15px;
+  border-radius: 4px;
+  background-color: rgba(195, 195, 195, 50%);
+  border: 2px solid rgba(10,100,10, 60%);
+}
+.user {
+  width: 80%;
+  height: 20px;
+  background-color: #fff;
+  margin: 5%;
+  padding: 3% 3% 5% 3%;
+  border-radius: 4px;
+  border: 2px solid rgba(10,100,10, 60%);
+}
+.chat__messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.message {
+  margin-right: 2%;
+  margin-top: 1%;
+}
+.message > p {
+  display: inline-block;
+  background-color: #fff;
+  margin: 3% 2% 0 2%;
+  border-radius: 4px;
+  border: 2px solid rgba(10,100,10, 60%);
+  text-align: right;
+  padding: 10px 10px 0 10px;  
+}
+.message > div {
+  font-size: 15px;
+  color: rgba(0, 0, 100, 60%);
+  margin-left: 7px;
+}
+.btn__chat_enter {
+  background-color: rgba(31, 160, 70, 90%);
+  margin: 0 5% ;
+  border-radius: 4px;
+  padding: 1% 2% 0 2%;
+  border: 2px solid rgba(10,10,10, 60%);
+}
