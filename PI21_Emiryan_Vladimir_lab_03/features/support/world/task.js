@@ -10,27 +10,18 @@ class TaskWorld extends BaseWorld {
         this.post("/api/task", {theme, timeOfRemind, deadline});
     }
 
-    // createTask() {
-    //     this.get('/task');
-    // }
-    // getTasks() {
-    //     this.get('/ping');
-    // }
-    // getTask() {
-    //     this.get('/ping');
-    // }
-    // updateTask() {
-    //     this.get('/ping');
-    // }
-    // deleteTask() {
-    //     this.get('/ping');
-    // }
+    getTasks() {
+         this.get('/api/task');
+    }
     
+    getTask(id) {
+        this.get("/api/task/" + id);
+    }
+
     async clear() {
         await db.query("DELETE FROM task");
         await db.query("ALTER SEQUENCE task_id_seq RESTART WITH 1;");
     }
-
 }
 
 module.exports = {

@@ -17,7 +17,6 @@ class RootWorld extends BaseWorld {
 
 setWorldConstructor(RootWorld);
 
-
-// setWorldConstructor(function () {
-//     this.world = new RootWorld();
-// });
+module.exports = {
+    BaseWorld
+}

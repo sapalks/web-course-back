@@ -1,3 +1,5 @@
+const db = require ("../../db")
+
 function deepFilterProperties(json, props) {
     if (Array.isArray(json)) {
         return json.map((item) => deepFilterProperties(item, props));
@@ -19,8 +21,6 @@ function deepFilterProperties(json, props) {
             continue;
         }
         result[k] = value;
-
-        //result[k] = value;
     }
 
     return result;
@@ -75,9 +75,22 @@ function isObject(x) {
     return Object.prototype.toString.call(x) === '[object Object]';
 }
 
+async function getDatabaseName() {
+    const context = await db.query("SELECT current_database ();");
+    const name = context.rows[0]['current_database'];
+    return name;
+}
+
+async function isNotEmptyTaskTable() {
+    const context = await db.query(`SELECT * FROM task`);
+    return true ? context.rowCount > 0 : false;
+}
+
 module.exports = {
     matchObjects,
     deepFilterProperties,
     isObject,
-    changeDataFormat
+    changeDataFormat,
+    getDatabaseName,
+    isNotEmptyTaskTable
 }

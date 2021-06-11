@@ -7,7 +7,6 @@ class TaskController {
         const newTask = await db.query(`INSERT INTO task (theme, timeOfRemind, deadline) values ($1, $2, $3) RETURNING *`, [theme, timeOfRemind, deadline])
         const web = res.json(newTask.rows[0])
         res.json(web['body'])
-        //console.log(web)
     }
     async getTasks(req, res) {
         const tasks = await db.query(`SELECT * FROM task`)

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/2oublePeace/web-course-back#readme",
   "dependencies": {
+    "chai": "^4.3.4",
     "express": "^4.17.1",
     "pg": "^8.6.0",
     "sync-request": "^6.1.0"
