@@ -18,6 +18,14 @@ class TaskWorld extends BaseWorld {
         this.get("/api/task/" + id);
     }
 
+    updateTask(theme, timeOfRemind, deadline, id) {
+        this.put("/api/task", {id, theme, timeOfRemind, deadline});
+    }
+
+    deleteTask(id) {
+        this.delete("/api/task/" + id);
+    }
+
     async clear() {
         await db.query("DELETE FROM task");
         await db.query("ALTER SEQUENCE task_id_seq RESTART WITH 1;");

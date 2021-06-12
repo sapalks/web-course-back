@@ -81,6 +81,14 @@ async function getDatabaseName() {
     return name;
 }
 
+async function containsThisTask(taskTheme) {
+    const context = await db.query(`SELECT * FROM task where theme = $1`, [taskTheme]);
+    if(context.rows.length > 0) {
+        return true;
+    }
+    return false;
+}
+
 async function isNotEmptyTaskTable() {
     const context = await db.query(`SELECT * FROM task`);
     return true ? context.rowCount > 0 : false;
@@ -92,5 +100,6 @@ module.exports = {
     isObject,
     changeDataFormat,
     getDatabaseName,
-    isNotEmptyTaskTable
+    isNotEmptyTaskTable,
+    containsThisTask
 }

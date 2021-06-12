@@ -57,6 +57,23 @@ class BaseWorld {
         return response;
     }
 
+    put(url, body = {}, remember = true) {
+        this._state.request = { method: 'PUT', url: this.url(url), body: body };
+        const response = post(this._state.request);
+        if (remember) {
+            this._state.response = response;
+        }
+        return response;
+    }
+
+    delete(url, remember = true) {
+        this._state.request = { method: 'DELETE', url: this.url(url) };
+        const response = get(this._state.request);
+        if (remember) {
+            this._state.response = response;
+        }
+        return response;
+    }
 }
 
 module.exports = {

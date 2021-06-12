@@ -1,9 +1,13 @@
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const {expect} = require('chai')
-const { deepFilterProperties, matchObjects, isObject, getDatabaseName, isNotEmptyTaskTable} = require('./utils');
+const { deepFilterProperties, matchObjects, isObject, getDatabaseName, isNotEmptyTaskTable, containsThisTask} = require('./utils');
+let startFeature = false;
 
-Before({tags: '@start and not @example'}, async function () {
-    await this.task().clear();
+Before({tags: '@start'}, async function () {
+    if(!startFeature) {
+        await this.task().clear();
+        startFeature = true;
+    }
 });
 
 //Scenario Outline: Create tasks
@@ -15,7 +19,7 @@ Given('a client have database with name {string}', async function (expectDatabas
     }
 });
 
-When('a client create task with theme {string}, Time of remind {string}, Deadline {string}', function (theme, timeofremind, deadline) {
+When('a client create task with theme {string}, time of remind {string}, deadline {string}', function (theme, timeofremind, deadline) {
     this.task().createTask(theme, timeofremind, deadline);
 });
 
@@ -57,12 +61,29 @@ Then('server must reply with the following json:', function (jsonStr) {
     expect(filtered).to.eql(expected);
 });
 
-//Get task by index
+//Scenario: Get task by index
 When('a client receives task by index {int}', function (index) {
     this.task().getTask(index);
 });
 
-//
+//Scenario: Update task by index
+Given('a client have task with theme {string}', async function (expectTaskTheme) {
+    const responseTaskTheme = await containsThisTask(expectTaskTheme);
+    const expect = true;
+
+    if (!matchObjects(expect, responseTaskTheme)) {
+        expect(responseTaskTheme).to.eql(expect);
+    }
+});
+
+When('a client update task with theme {string}, time of remind {string}, deadline {string} by index {int}', function (theme, timeOfRemind, deadline, index) {
+    this.task().updateTask(theme, timeOfRemind, deadline, index);
+});
+
+//Delete task by index
+When('a client delete task with theme by index {int}', function (index) {
+    this.task().deleteTask(index);
+});
 
 After({tags: '@end'}, async function () {
     await this.task().clear();
