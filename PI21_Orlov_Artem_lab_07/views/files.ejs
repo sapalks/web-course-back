@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Files</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+
+<h1>Files and folders</h1>
+<% if(folders) { %>
+    <h3>Folders:</h3>
+    <ul>
+        <% for(let i = 0; i < folders.length;i++) { %>
+        <li><%= folders[i] %></li>
+        <% } %>
+    </ul>
+<% }else { %>
+    <h3>Fodlers not found</h3>
+<% } %>
+
+<% if(files) { %>
+    <h3>Files:</h3>
+    <ul>
+        <% for(let i = 0; i < files.length;i++) { %>
+        <li><%= files[i] %></li>
+        <% } %>
+    </ul>
+<% }else { %>
+    <h3>Files not found</h3>
+<% } %>
+
+</body>
+<html>
