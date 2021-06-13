@@ -1,0 +1,79 @@
+body {
+	background: darkgray;
+}
+
+.userListCol {
+	background-color:rgb(46, 126, 46);
+	padding: 10px 10px 0;
+	border-radius: 5px;
+}
+
+.roomPars {
+	margin-bottom: 15px;
+	background-color: white;
+	border-radius: 5px;
+	padding: 10px 10px 0;
+}
+
+
+.messages-container {
+    overflow: hidden;
+	background-color:rgb(92, 216, 233);
+}
+
+.messages {
+    overflow: auto;
+	padding: 20px 20px 0;
+	height: 600px;
+	overflow-y: scroll;
+	margin-right: -15px;
+}
+
+.messages div {
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: white;
+	border-radius: 5px;
+	width: 52%;
+}
+
+.my-message {
+	float: right;
+}
+
+.message {
+	float: left;
+}
+
+.text {
+	font-size: 18px;
+}
+
+.chat-form-container {
+	padding: 30px;
+	background-color: #02213b;
+	border-radius: 0 0 15px 15px;
+	height: 100px;
+}
+
+
+.chat-form-container #message-sending-form {
+	display: flex;
+}
+
+.chat-form-container input {
+	height: 40px;
+	width: 80px;
+	flex: 2;
+}
+
+.span-header {
+	text-align: center;
+	font-size: 34px;
+	font-weight: bold;
+}
+.user {
+	text-align: center;
+	font-size: 32px;
+	color:darkred
+}
