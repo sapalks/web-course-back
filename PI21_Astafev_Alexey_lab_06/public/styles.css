@@ -1,0 +1,42 @@
+body {
+    background-color: rgba(225, 150, 150, 0.5);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    color: black;
+}
+
+.get {
+    margin: 22% auto 25px;
+    color: black;
+}
+
+.main {
+    margin-top: 20%;
+}
+
+.buttons {
+    margin-bottom: 50px;
+}
+
+.token {
+    margin-top: 18%;
+    color: black;
+}
+
+.info {
+    color: green;
+}
+
+.info_time {
+    color: greenyellow;
+}
+
+.email {
+    font-size: 200%;
+}
+
+tr {
+    font-size: 150%;
+}
