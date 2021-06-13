@@ -1,13 +1,21 @@
 const express = require('express')
+const app = express()
+const PORT = process.env.PORT || 3000
+const passport = require('passport')
+app.use(passport.initialize())
+require('./passport')(passport)
+
 const taskRouter = require('./routes/task.routes')
 const stepRouter = require('./routes/step.routes')
+const userRouter = require('./routes/user.routes')
 
-const PORT = process.env.PORT || 3000
+app.use(express.json());
 
-const app = express()
+app.listen(PORT, () => {
+    console.log(`server started on post ${PORT}`)
+});
 
-app.use(express.json())
-app.use('/api', taskRouter)
-app.use('/api', stepRouter)
+app.use('/api', taskRouter);
+app.use('/api', stepRouter);
+app.use('/api', userRouter)
 
-app.listen(PORT, () => console.log(`server started on post ${PORT}`))

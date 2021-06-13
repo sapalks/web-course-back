@@ -11,3 +11,9 @@ create TABLE step(
     task_id INTEGER,
     FOREIGN KEY (task_id) REFERENCES task (id)
 );
+
+create TABLE app_user(
+    id SERIAL PRIMARY KEY,
+    login VARCHAR(255),
+    password VARCHAR(255)
+);
