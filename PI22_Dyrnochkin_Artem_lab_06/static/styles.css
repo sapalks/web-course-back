@@ -1,0 +1,19 @@
+body {
+    background: #1265d3;
+}
+
+.btn {
+    background-color: #24ee11;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+#text_col {
+    color: white;
+    font-size: 16px;
+}
