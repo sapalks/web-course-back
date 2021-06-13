@@ -89,8 +89,21 @@ async function containsThisTask(taskTheme) {
     return false;
 }
 
+async function containsThisStep(stepTheme) {
+    const context = await db.query(`SELECT * FROM step where theme = $1`, [stepTheme]);
+    if(context.rows.length > 0) {
+        return true;
+    }
+    return false;
+}
+
 async function isNotEmptyTaskTable() {
     const context = await db.query(`SELECT * FROM task`);
+    return true ? context.rowCount > 0 : false;
+}
+
+async function isNotEmptyStepTable() {
+    const context = await db.query(`SELECT * FROM step`);
     return true ? context.rowCount > 0 : false;
 }
 
@@ -101,5 +114,7 @@ module.exports = {
     changeDataFormat,
     getDatabaseName,
     isNotEmptyTaskTable,
-    containsThisTask
+    containsThisTask,
+    containsThisStep,
+    isNotEmptyStepTable
 }

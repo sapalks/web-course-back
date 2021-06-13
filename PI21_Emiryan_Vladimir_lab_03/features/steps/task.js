@@ -1,6 +1,6 @@
 const { Given, When, Then, Before, After } = require('@cucumber/cucumber');
 const {expect} = require('chai')
-const { deepFilterProperties, matchObjects, isObject, getDatabaseName, isNotEmptyTaskTable, containsThisTask} = require('./utils');
+const { deepFilterProperties, matchObjects, isObject, getDatabaseName, isNotEmptyTaskTable, containsThisTask } = require('./utils');
 let startFeature = false;
 
 Before({tags: '@start'}, async function () {

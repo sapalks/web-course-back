@@ -7,8 +7,14 @@ class StepController {
         res.json(newStep.rows[0])
     }
     async getSteps(req, res) {
-        const id = req.query.taskId
-        const steps = await db.query(`SELECT * FROM step where task_id = $1`, [id])
+        const id = req.query.id
+        let steps;
+        if(id) {
+            steps = await db.query(`SELECT * FROM step where task_id = $1`, [id])
+        } else {
+            steps = await db.query(`SELECT * FROM step`)
+        }
+        
         res.json(steps.rows)
     }
     async getStep(req, res) {
