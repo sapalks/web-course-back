@@ -15,8 +15,9 @@ class firmC {
         if (cached) {
             return res.json(cached);
         }
-        res.json((await database.query('select * from firm where isDeleted = false')).rows);
-        dataCache.addEntry('firms', (await database.query('select * from firm where isDeleted = false')).rows);
+        var firms = (await database.query('select * from firm where isDeleted = false')).rows;
+        res.json(firms);
+        dataCache.addEntry('firms', firms);
     }
 
     async readOne(req, res) {
@@ -25,8 +26,9 @@ class firmC {
         if (cached) {
             return res.json(cached);
         }
-        res.json((await database.query('select * from firm where isDeleted = false and firmId = $1', [firmId])).rows);
-        dataCache.addEntry(`firm ${firmId}`, (await database.query('select * from firm where isDeleted = false and firmId = $1', [firmId])).rows);
+        var firm = (await database.query('select * from firm where isDeleted = false and firmId = $1', [firmId])).rows;
+        res.json(firm);
+        dataCache.addEntry(`firm ${firmId}`, firm);
     }
 
     async update(req, res) {

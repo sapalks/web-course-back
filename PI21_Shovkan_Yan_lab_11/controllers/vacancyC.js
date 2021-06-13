@@ -15,8 +15,9 @@ class vacancyC {
         if (cached) {
             return res.json(cached);
         }
-        res.json((await database.query('select * from vacancy where isDeleted = false')).rows);
-        dataCache.addEntry('vacancies', (await database.query('select * from vacancy where isDeleted = false')).rows);
+        var vacancies = (await database.query('select * from vacancy where isDeleted = false')).rows;
+        res.json(vacancies);
+        dataCache.addEntry('vacancies', vacancies);
     }
 
     async readOne(req, res) {
@@ -25,8 +26,9 @@ class vacancyC {
         if (cached) {
             return res.json(cached);
         }
-        res.json((await database.query('select * from vacancy where isDeleted = false and vacancyId = $1', [vacancyId])).rows);
-        dataCache.addEntry(`vacancy ${vacancyId}`, (await database.query('select * from vacancy where isDeleted = false and vacancyId = $1', [vacancyId])).rows);
+        var vacancy = (await database.query('select * from vacancy where isDeleted = false and vacancyId = $1', [vacancyId])).rows;
+        res.json(vacancy);
+        dataCache.addEntry(`vacancy ${vacancyId}`, vacancy);
     }
     
     async update(req, res) {
