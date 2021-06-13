@@ -33,6 +33,8 @@ class StepWorld extends BaseWorld {
     async clear() {
         await db.query("DELETE FROM step");
         await db.query("ALTER SEQUENCE step_id_seq RESTART WITH 1;");
+        await db.query("DELETE FROM task");
+        await db.query("ALTER SEQUENCE task_id_seq RESTART WITH 1;");
     }
 }
 
