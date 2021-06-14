@@ -25,8 +25,7 @@ class userController {
         if(!currentUser || password !== currentUser.password) {
             return res.status(400).json({ status: 'error', error: 'User not found or Invalid password' });
         }
-        // функция sing принимает 3 параметра: объект с данными, помещаемый в токен,
-        // секретный ключ и время существования токена
+        
         const token = jwt.sign({userId: currentUser.id, login}, 'secret', { expiresIn: "7d" })
         return res.json({
             token,
