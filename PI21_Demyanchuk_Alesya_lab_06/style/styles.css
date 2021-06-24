@@ -1,0 +1,27 @@
+body {
+    background: #07f0e4;
+}
+
+.button {
+    border: 2ch;
+    background: #8c055f;
+    background-color: #8c055f;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    border-radius: 20px;
+    margin: 8px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    padding-top: 8px; /*верхний внутренний отступ*/
+    padding-left: 8px; /*левый внутренний отступ*/
+    padding-right: 8px; /*правый внутренний отступ*/
+    padding-bottom: 5px; /*нижний внутренний отступ*/
+}
+
+.text {
+    padding: 10px;
+    color: rgb(255, 255,255);
+    font-size: 20px;
+}
