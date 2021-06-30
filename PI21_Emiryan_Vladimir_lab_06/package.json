@@ -8,7 +8,8 @@
     "express": "^4.17.1",
     "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
-    "passport-yandex": "^0.0.5"
+    "passport-yandex": "^0.0.5",
+    "window": "^4.2.7"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
