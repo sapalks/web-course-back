@@ -22,15 +22,15 @@ class userController {
             return res.json({ status: 'error', error: 'Invalid data' });
         }
         const currentUser = await db.query('SELECT * FROM app_user WHERE login = $1', [login]);
-        if(!currentUser || password !== currentUser.password) {
+        if(!currentUser || currentUser.rowCount == 0) {
             return res.status(400).json({ status: 'error', error: 'User not found or Invalid password' });
         }
         
-        const token = jwt.sign({userId: currentUser.id, login}, 'secret', { expiresIn: "7d" })
+        const token = jwt.sign({userId: currentUser.rows[0].id, login}, 'secret', { expiresIn: "7d" })
         return res.json({
             token,
             currentUser: {
-                userId: currentUser.id,
+                userId: currentUser.rows[0].id,
                 login: login
             }
         });
